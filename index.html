@@ -283,14 +283,14 @@
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
     const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKu_MMw4PyBBGA0RUDawfeXYcITEXzCfmfecThw-bsNNlBC6d6tWFwmcAJFwNfiHDG/exec";
 
-    // Deity Database
+// Deity Database (Updated with BW Direct PNG Links)
     const DEITIES = {
       "Lyricia": {
         alignment: "Lawful Good",
         domains: "Knowledge, Money, Engineering",
         color: "#ea32ca",
         fontClass: "font-Lyricia",
-        imgColor: "https://imgur.com/MYVDHjH",
+        imgBW: "https://i.imgur.com/wC03uZI.png",
         desc: "Scholar and economic mind who values law, structure, and organized industry."
       },
       "Oray": {
@@ -298,7 +298,7 @@
         domains: "Magic, Dragons, Choice",
         color: "#b7b7b7",
         fontClass: "font-Oray",
-        imgColor: "https://imgur.com/SxOctek",
+        imgBW: "https://i.imgur.com/ZEb0ehs.png",
         desc: "Arcane perfectionist who respects discipline, rules, and individual discovery."
       },
       "Ousava": {
@@ -306,7 +306,7 @@
         domains: "Life, Elements, Creation",
         color: "#9900ff",
         fontClass: "font-Ousava",
-        imgColor: "https://imgur.com/80inyux",
+        imgBW: "https://i.imgur.com/D0bsg44.png",
         desc: "Nurturing protector of nature, community, and elemental balance."
       },
       "Ay": {
@@ -314,7 +314,7 @@
         domains: "Love, Mask, Fate, Balance, Destiny",
         color: "#ff9900",
         fontClass: "font-Ay",
-        imgColor: "https://imgur.com/E7AYFxL",
+        imgBW: "https://i.imgur.com/2FC2FFJ.png",
         desc: "Mystical keeper who accepts fate, wears sacred masks, and maintains cosmic balance."
       },
       "Kayzoku": {
@@ -322,7 +322,7 @@
         domains: "Trickery, Law, Chains, Gambling",
         color: "#8e7cc3",
         fontClass: "font-Kayzoku",
-        imgColor: "https://imgur.com/CBojgKL",
+        imgBW: "https://i.imgur.com/wV0pk9C.png",
         desc: "Gambler and thrill-seeker who loves rules only for the loopholes they provide."
       },
       "Celeste": {
@@ -330,7 +330,7 @@
         domains: "Arts, Competition, Hearth, War",
         color: "#00cccc",
         fontClass: "font-Celeste",
-        imgColor: "https://imgur.com/I5sUz2U",
+        imgBW: "https://i.imgur.com/ghulMS3.png",
         desc: "Passionate warrior and artist, competitive, welcoming, and glory-driven."
       },
       "Psyon": {
@@ -338,7 +338,7 @@
         domains: "Madness, Pain, Chaos",
         color: "#eeeeee",
         fontClass: "font-Psyon",
-        imgColor: "https://imgur.com/RyHT82y",
+        imgBW: "https://i.imgur.com/3KOht2B.png",
         desc: "Agent of chaos and unpredictable force who thrives in disorder and fracturing reality."
       },
       "Krayvuk": {
@@ -346,7 +346,7 @@
         domains: "Death, Space, Time, Science",
         color: "#00ff00",
         fontClass: "font-Krayvuk",
-        imgColor: "https://imgur.com/A256PSY",
+        imgBW: "https://i.imgur.com/DEVvCnO.png",
         desc: "Analytical observer fascinated by time, celestial mechanics, space, and mortality."
       },
       "Slavyna": {
@@ -354,7 +354,7 @@
         domains: "Sex, Lust, Vengeance, Secrets",
         color: "#ff0000",
         fontClass: "font-Slavyna",
-        imgColor: "https://imgur.com/YJBmwFe",
+        imgBW: "https://i.imgur.com/eJjLJm7.png",
         desc: "Charming, secretive strategist who uses seduction, masks, and leverage to extract power."
       }
     };
@@ -461,7 +461,7 @@
       document.getElementById("god-alignment").innerText = `Alignment: ${info.alignment}`;
       document.getElementById("god-domains").innerText = `Domains: ${info.domains}`;
       document.getElementById("god-desc").innerText = info.desc;
-      document.getElementById("god-img").src = info.imgColor;
+      document.getElementById("god-img").src = info.imgBW;
 
       // Score breakdown list
       const tallyBox = document.getElementById("scores-breakdown");
