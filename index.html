@@ -387,28 +387,208 @@
     };
 
     // 20 Questions Data
-    const QUESTIONS = [
-      { id: 1, title: "You discover an ancient tome containing every detail of your future life. Do you read it?", options: [{ text: "Read it to change what I don't like. Destiny is a puzzle to be solved and optimized.", deities: ["Oray", "Lyricia"] }, { text: "Never dare look. The threads of Fate are sacred, and meddling with destiny brings ruin.", deities: ["Ay"] }, { text: "Study its structure strictly as a scientific phenomenon. Time and space follow observable, logical laws.", deities: ["Krayvuk"] }, { text: "Burn it instantly. Life is a gamble, and knowing the outcome ruins the thrill!", deities: ["Kayzoku"] }] },
-      { id: 2, title: "How do you believe high magic and arcane arts should be taught to mortals?", options: [{ text: "Earned through discipline, research, and individual discovery by those willing to work for it.", deities: ["Oray"] }, { text: "Systematized, standardized, and distributed to fuel engineering and societal growth.", deities: ["Lyricia"] }, { text: "Nurtured organically as an extension of natural life and elemental balance.", deities: ["Ousava"] }, { text: "Guarded in secret academies, shared only with those who can leverage it for power.", deities: ["Slavyna"] }] },
-      { id: 3, title: "Exploring a long-lost, cavernous library filled with forgotten knowledge sounds like...", options: [{ text: "The ultimate adventure—knowledge is the greatest wealth in existence.", deities: ["Lyricia", "Oray"] }, { text: "A worthy journey, provided it holds ancient artistic works or heroic histories.", deities: ["Celeste"] }, { text: "A tedious trap—I'd rather be in a lively tavern or high-stakes hall of chance.", deities: ["Kayzoku"] }, { text: "A dark, unsettling tomb better suited for unearthing dark secrets.", deities: ["Krayvuk", "Slavyna"] }] },
-      { id: 4, title: "A wealthy merchant in the crowded market unknowingly drops his heavy purse of gold. Do you...", options: [{ text: "Pick it up and return it to him immediately. Order and honesty keep society whole.", deities: ["Lyricia", "Ousava"] }, { text: "Pocket it before anyone notices—fortune favors the swift!", deities: ["Kayzoku"] }, { text: "Return it, but subtly use the gesture to extract a future secret or favor.", deities: ["Slavyna"] }, { text: "Leave it on the floor. Wealth flows where destiny dictates.", deities: ["Ay"] }] },
-      { id: 5, title: "You discover the secret alchemical formula to transmute lead into pure gold. What is your reaction?", options: [{ text: "Share it publicly to build grand cities, schools, and mints.", deities: ["Lyricia"] }, { text: "Keep it locked away—flooding the world with wealth disrupts divine balance.", deities: ["Ay"] }, { text: "Use it in secret to fund your private experiments and strategic goals.", deities: ["Krayvuk"] }, { text: "Flood the market instantly just to watch the economic chaos unfold!", deities: ["Psyon"] }] },
-      { id: 6, title: "A close friend finds themselves homeless and destitute. How do you assist them?", options: [{ text: "Welcome them into your home with open arms and a warm hearth.", deities: ["Celeste", "Ousava"] }, { text: "Offer them a structured contract or work in your business so they earn their way.", deities: ["Lyricia"] }, { text: "Hope they find help elsewhere; personal hardship builds survival instincts.", deities: ["Krayvuk"] }, { text: "Help them track down and exact vengeance on whoever ruined them.", deities: ["Slavyna"] }] },
-      { id: 7, title: "What does a \"perfect day\" look like to your adventurer?", options: [{ text: "Freshly brewed tea, quiet surroundings, and a deep tome to study.", deities: ["Lyricia", "Oray"] }, { text: "Rigorous combat training, archery, horseback riding, and a grand feast.", deities: ["Celeste"] }, { text: "Indulging in high-stakes games, masked revelry, and unpredictable thrills.", deities: ["Kayzoku", "Slavyna"] }, { text: "Wandering forgotten ruins or quiet graveyards to commune with cosmic forces.", deities: ["Krayvuk", "Ay"] }] },
-      { id: 8, title: "You are pulled over by town guards for speeding or breaking local ordinances. What is your go-to maneuver?", options: [{ text: "Attempt to charm, flirt, or use charisma to slide out of trouble.", deities: ["Slavyna"] }, { text: "Pay the fine or accept the ticket—you broke the law, after all.", deities: ["Oray", "Lyricia"] }, { text: "Challenge the guard to a quick wager or game of chance for your freedom!", deities: ["Kayzoku"] }, { text: "Outsmart them with legalese or technical loopholes in their own rules.", deities: ["Kayzoku", "Krayvuk"] }] },
-      { id: 9, title: "Everyone said you could never make any real friends, so you headed to the...", options: [{ text: "Tavern to win people over with games, drinks, and lively stories.", deities: ["Celeste", "Kayzoku"] }, { text: "Graveyard to commune with the spirits who don't chatter endlessly.", deities: ["Krayvuk"] }, { text: "Underground guild hall where loyalty is bought with secrets.", deities: ["Slavyna"] }, { text: "Wilds or gardens to surround yourself with nature and creatures.", deities: ["Ousava"] }] },
-      { id: 10, title: "When entering a competition or race, what matters most?", options: [{ text: "Winning at all costs through athletic mastery or tactical brilliance.", deities: ["Celeste"] }, { text: "Enjoying the journey, the camaraderie, and the experience.", deities: ["Ousava"] }, { text: "Outwitting your opponents with clever tricks or hidden advantages.", deities: ["Kayzoku", "Slavyna"] }, { text: "Collecting data on your performance to improve future calculations.", deities: ["Krayvuk", "Lyricia"] }] },
-      { id: 11, title: "Someone you trusted deeply betrays you to your enemies. What is your response?", options: [{ text: "Plot a meticulous, secretive scheme to strike back twice as hard.", deities: ["Slavyna"] }, { text: "Challenge them directly in open combat or public competition.", deities: ["Celeste"] }, { text: "Focus on restoration and healing. Forgive where possible.", deities: ["Ousava"] }, { text: "Accept the betrayal as a necessary thread in the grand tapestry of Fate.", deities: ["Ay"] }] },
-      { id: 12, title: "How do you view rigid societal laws, contracts, and legal systems?", options: [{ text: "Essential frameworks that protect civilization, foster trade, and structure growth.", deities: ["Lyricia"] }, { text: "Respected guidelines, though personal choices and arcane mastery transcend mortal codes.", deities: ["Oray"] }, { text: "Tools meant to be exploited or bent. Laws are only interesting if there’s a clever loophole!", deities: ["Kayzoku"] }, { text: "Meaningless constraints that suppress the natural, beautiful chaos of existence.", deities: ["Psyon"] }] },
-      { id: 13, title: "When embarking on a grand new project or build, what is your primary inspiration?", options: [{ text: "Creating a masterwork of art, expression, or architectural beauty that inspires awe.", deities: ["Celeste"] }, { text: "Constructing an efficient, highly profitable machine or technological advancement.", deities: ["Lyricia"] }, { text: "Unlocking fundamental scientific laws governing space, time, and physical forces.", deities: ["Krayvuk"] }, { text: "Nurturing organic life and natural harmony, working alongside the elements.", deities: ["Ousava"] }] },
-      { id: 14, title: "A mysterious artifact capable of bending reality falls into your hands. How do you handle it?", options: [{ text: "Study its arcane properties systematically to expand the boundaries of magic.", deities: ["Oray"] }, { text: "Secure it in a high-tech vault or treasury to prevent economic and political instability.", deities: ["Lyricia"] }, { text: "Dissect its mechanical and temporal structure to understand its clockwork mechanics.", deities: ["Krayvuk"] }, { text: "Unleash its power unpredictably just to see how reality bends and fractures!", deities: ["Psyon"] }] },
-      { id: 15, title: "You attend the grand festival celebrating the alignment of Konran's twin moons. Where are you found?", options: [{ text: "At the high-stakes gambling tables, risking gold on games of chance and skill.", deities: ["Kayzoku"] }, { text: "In a dimly lit alcove wearing an ornate mask, exchanging whispers and gathering leverage.", deities: ["Slavyna", "Ay"] }, { text: "In the center of the court, participating in dance, song, or martial exhibitions.", deities: ["Celeste"] }, { text: "Observing the celestial mechanics from an observatory, calculating the astronomical alignment.", deities: ["Krayvuk"] }] },
-      { id: 16, title: "How do you feel about wearing masks or maintaining a double life?", options: [{ text: "Masks are sacred items that reveal our true spiritual alignment and honor Destiny.", deities: ["Ay"] }, { text: "Concealment is strategic. Keeping secrets gives you ultimate leverage over others.", deities: ["Slavyna"] }, { text: "Why hide who you are? True strength comes from living openly and passionately!", deities: ["Celeste"] }, { text: "A disguise is just a fun trick to keep people guessing during the grand game of life.", deities: ["Kayzoku"] }] },
-      { id: 17, title: "What is your perspective on death and the passage of time?", options: [{ text: "Death is a natural transition, leading into new life or soul filtration in Konran.", deities: ["Ousava"] }, { text: "Space and time are measurable dimensions to be observed, manipulated, and mastered.", deities: ["Krayvuk"] }, { text: "Death is the fixed end-point woven onto the loom long before our birth.", deities: ["Ay"] }, { text: "Time is an agonizing burden, and death is merely a portal into chaotic madness.", deities: ["Psyon"] }] },
-      { id: 18, title: "When an unexpected natural disaster or crisis strikes, how do you react?", options: [{ text: "Organize an orderly, logical response using structure and engineered defenses.", deities: ["Lyricia"] }, { text: "Rally the people with martial bravery to protect hearth and home.", deities: ["Celeste"] }, { text: "Embrace the wild unpredictability and adapt fluidly—disorder reveals true nature.", deities: ["Kayzoku", "Psyon"] }, { text: "Retreat into hidden subterranean safe-havens until the surface storm clears.", deities: ["Slavyna"] }] },
-      { id: 19, title: "Which environment feels most like home to your character?", options: [{ text: "Lush, vibrant rainforests or ocean coastlines teeming with untamed life.", deities: ["Ousava"] }, { text: "Volcanic peaks, steam labs, and grand dragon-rider roosts.", deities: ["Oray"] }, { text: "Subterranean crystal lattices, mints, and bustling trade hubs.", deities: ["Lyricia"] }, { text: "Secretive underground sanctuaries or opulent moonlit pleasure palaces.", deities: ["Slavyna"] }] },
-      { id: 20, title: "Which core motto best captures your adventurer's personal ethos?", options: [{ text: "\"Knowledge is power, and organized industry brings true prosperity.\"", deities: ["Lyricia"] }, { text: "\"Life is a grand arena for glory, artistic expression, and athletic competition!\"", deities: ["Celeste"] }, { text: "\"Nothing is fixed except the roll of the dice and the thrill of taking a chance.\"", deities: ["Kayzoku"] }, { text: "\"Every action, emotion, and life thread is bound to the eternal balance of Destiny.\"", deities: ["Ay"] }] }
-    ];
+const QUESTIONS = [
+  {
+    id: 1,
+    question: "An ancient celestial relic from the Founding Gods is uncovered in Vantya. Which power do you seek to unlock?",
+    options: [
+      { text: "A bioluminescent crystal ledger that optimizes trade routes, engineering, and endless economic wealth.", primary: "Lyricia", secondary: "Oray" },
+      { text: "A shifting prism of mist that fractures reality, inducing wild visions and uninhibited chaos.", primary: "Psyon", secondary: "Kayzoku" },
+      { text: "An elemental seed from the colossal Tree of Life that restores barren worlds and purifies water.", primary: "Ousava", secondary: "Celeste" },
+      { text: "A sacred woven mask that reveals the exact, unalterable thread of your woven destiny.", primary: "Ay", secondary: "Krayvuk" }
+    ]
+  },
+  {
+    id: 2,
+    question: "Your home realm's planetary crust is unstable and collapsing into a void. What is your response?",
+    options: [
+      { text: "Harness raw arcane energy and command dragon riders to reinforce the crust through sheer magic and willpower.", primary: "Oray", secondary: "Lyricia" },
+      { text: "Observe the temporal collapse dispassionately, gathering data on space-time mechanics for future calculations.", primary: "Krayvuk", secondary: "Ay" },
+      { text: "Seize the panic to set up high-stakes bets on when it falls, escaping through a clever loophole during The Passing.", primary: "Kayzoku", secondary: "Psyon" },
+      { text: "Rally warriors and artists to construct a grand amphitheater, performing a heroic final anthem before going into battle.", primary: "Celeste", secondary: "Ousava" }
+    ]
+  },
+  {
+    id: 3,
+    question: "You uncover a devastating secret about a powerful rival faction. How do you handle it?",
+    options: [
+      { text: "Use it as covert leverage within a dark academy or pleasure palace to draw them into a web of vengeance.", primary: "Slavyna", secondary: "Krayvuk" },
+      { text: "Present it directly to the legal courts of Vantya to enforce order, banking security, and societal justice.", primary: "Lyricia", secondary: "Ousava" },
+      { text: "Guard it in silence—the Loom of Fate will weave retribution in its own sacred time without mortal meddling.", primary: "Ay", secondary: "Oray" },
+      { text: "Encourage open dialogue, seeking reconciliation and community healing rather than destruction.", primary: "Ousava", secondary: "Celeste" }
+    ]
+  },
+  {
+    id: 4,
+    question: "You attend a grand festival in Konran celebrating divine unity. Where are you found?",
+    options: [
+      { text: "Competing in the Festival of Great Feats, showcasing combat bravery, athletic mastery, and musical arts.", primary: "Celeste", secondary: "Kayzoku" },
+      { text: "Navigating the moving caravan islands and risking fortunes at the luxury casinos.", primary: "Kayzoku", secondary: "Psyon" },
+      { text: "Attending the Secret Revels, wearing an ornate mask while exchanging whispers in dimly lit alcoves.", primary: "Slavyna", secondary: "Ay" },
+      { text: "Watching dragon riders execute aerial displays during Dragon's Flame Day alongside steam-lab mages.", primary: "Oray", secondary: "Lyricia" }
+    ]
+  },
+  {
+    id: 5,
+    question: "How should a civilization structure its laws and social hierarchy?",
+    options: [
+      { text: "Divide society between order and chaos, where rules exist only to be outsmarted or exploited by the clever.", primary: "Kayzoku", secondary: "Slavyna" },
+      { text: "Establish standardized contracts, mints, and engineering workshops to fuel societal growth.", primary: "Lyricia", secondary: "Oray" },
+      { text: "Reject rigid constraints entirely; true freedom is found in the unpredictable, maddening turmoil of pure chaos.", primary: "Psyon", secondary: "Kayzoku" },
+      { text: "Maintain strict discipline and respect for arcane order while honoring personal choice and individual evolution.", primary: "Oray", secondary: "Krayvuk" }
+    ]
+  },
+  {
+    id: 6,
+    question: "When contemplating death and the passage of time across the planes...",
+    options: [
+      { text: "Death is a measurable dimension of space and time, managed through clockwork precision and scientific study.", primary: "Krayvuk", secondary: "Lyricia" },
+      { text: "Death is a natural, peaceful transition into the universal cycle of life, leading to the afterlife filter of Konran.", primary: "Ousava", secondary: "Ay" },
+      { text: "Death is the fixed endpoint pre-woven on the Loom of Fate, requiring neither fear nor intervention.", primary: "Ay", secondary: "Krayvuk" },
+      { text: "Death is an agonizing, unpredictable portal into madness and dark transformation.", primary: "Psyon", secondary: "Slavyna" }
+    ]
+  },
+  {
+    id: 7,
+    question: "What constitutes the ultimate form of power in the Konra System?",
+    options: [
+      { text: "Absolute mastery over raw dragonfire, ancient arcane arts, and personal choice.", primary: "Oray", secondary: "Lyricia" },
+      { text: "Masterful control over desire, seduction, hidden secrets, and cold retribution.", primary: "Slavyna", secondary: "Psyon" },
+      { text: "The perfection of physical competition, artistic beauty, and honorable warfare.", primary: "Celeste", secondary: "Ousava" },
+      { text: "Complete control over space, time, and integrated clockwork-biological systems.", primary: "Krayvuk", secondary: "Oray" }
+    ]
+  },
+  {
+    id: 8,
+    question: "Which environment feels most like home to your adventurer?",
+    options: [
+      { text: "Lush rainforests, tempestuous ocean tides, and giant elemental trees.", primary: "Ousava", secondary: "Celeste" },
+      { text: "Bioluminescent crystal tunnels, bustling subterranean trade hubs, and grand mints.", primary: "Lyricia", secondary: "Krayvuk" },
+      { text: "Floating, untethered Patchwork Isles where gravity shifts and reality fractures.", primary: "Psyon", secondary: "Kayzoku" },
+      { text: "The hidden, shifting UnderCrust or opulent pleasure moons surrounded by shadows.", primary: "Slavyna", secondary: "Ay" }
+    ]
+  },
+  {
+    id: 9,
+    question: "You are negotiating a binding pact or agreement with another party. What is your strategy?",
+    options: [
+      { text: "Act as an impartial arbitrator, ensuring the pact aligns with cosmic balance and destiny.", primary: "Ay", secondary: "Ousava" },
+      { text: "Draft the contract with ambiguous wording so you can exploit a clever loophole later.", primary: "Kayzoku", secondary: "Slavyna" },
+      { text: "Embed complex technical clauses and temporal terms that guarantee your long-term scientific goals.", primary: "Krayvuk", secondary: "Lyricia" },
+      { text: "Keep the terms honorable and public, tested through fair competition and mutual respect.", primary: "Celeste", secondary: "Oray" }
+    ]
+  },
+  {
+    id: 10,
+    question: "When forced into open battle or combat, what guides your hand?",
+    options: [
+      { text: "Fighting with passion, martial bravery, and glory to protect the hearth and inspire legend.", primary: "Celeste", secondary: "Ousava" },
+      { text: "Commanding precise arcane spells and dragonfire to enforce tactical order and protect the weak.", primary: "Oray", secondary: "Lyricia" },
+      { text: "Inflicting unpredictable pain, fear, and sheer madness upon all who stand in your way.", primary: "Psyon", secondary: "Slavyna" },
+      { text: "Defending the natural ecosystem and elemental balance with fierce, protective devotion.", primary: "Ousava", secondary: "Celeste" }
+    ]
+  },
+  {
+    id: 11,
+    question: "A former ally betrays your party to a rival faction. What is your response?",
+    options: [
+      { text: "Plot meticulous, covert retribution within dark subterranean chambers to gain total leverage over them.", primary: "Slavyna", secondary: "Krayvuk" },
+      { text: "Report their breach of contract to the mints and legal guilds in Vantya to strip them of wealth and status.", primary: "Lyricia", secondary: "Kayzoku" },
+      { text: "Challenge them directly to an open duel during the Festival of Great Feats.", primary: "Celeste", secondary: "Oray" },
+      { text: "Accept the betrayal as a necessary, pre-woven thread in the grand tapestry of Fate.", primary: "Ay", secondary: "Ousava" }
+    ]
+  },
+  {
+    id: 12,
+    question: "If you could establish your personal domain or stronghold anywhere in the Konra System, where would it be?",
+    options: [
+      { text: "The moon of Kelth or Zorm, overseeing automated mints and endless artisan workshops.", primary: "Lyricia", secondary: "Oray" },
+      { text: "The plane of Synthelavor, amidst dark academies, shadow schools, and opulent pleasure palaces.", primary: "Slavyna", secondary: "Psyon" },
+      { text: "The mechanical lobe of Kestox, surrounded by liquid metal lakes and clockwork machine shops.", primary: "Krayvuk", secondary: "Lyricia" },
+      { text: "The divided realm of Kee, leveraging willpower and intelligence to maintain absolute societal order.", primary: "Kayzoku", secondary: "Krayvuk" }
+    ]
+  },
+  {
+    id: 13,
+    question: "A catastrophic planar disturbance threatens to collapse your local environment. How do you adapt?",
+    options: [
+      { text: "Wait for the annual alignment during The Passing to leap into a contrasting world and start fresh.", primary: "Kayzoku", secondary: "Psyon" },
+      { text: "Perform rituals on Time's Eclipse or Ancestral Night to study space-time stability.", primary: "Krayvuk", secondary: "Ay" },
+      { text: "Command dragon riders and steam-lab mages to reinforce the realm through raw arcane energy.", primary: "Oray", secondary: "Lyricia" },
+      { text: "Open your home during Life's Dawn, providing shelter, warm hearths, and elemental healing to refugees.", primary: "Ousava", secondary: "Celeste" }
+    ]
+  },
+  {
+    id: 14,
+    question: "How does your character view material gold, minted coins, and physical wealth?",
+    options: [
+      { text: "Essential instruments of industry and engineering that build grand cities, schools, and mints.", primary: "Lyricia", secondary: "Krayvuk" },
+      { text: "Currency belongs on the gambling tables—risked, won, or lost in high-stakes games of chance!", primary: "Kayzoku", secondary: "Psyon" },
+      { text: "Gold is irrelevant compared to the true value of untamed nature, elemental life, and community harmony.", primary: "Ousava", secondary: "Celeste" },
+      { text: "Wealth is leverage—used to purchase loyalty, buy secrets, and fund clandestine networks.", primary: "Slavyna", secondary: "Kayzoku" }
+    ]
+  },
+  {
+    id: 15,
+    question: "You discover an ancient, sealed repository containing forbidden planar secrets. How do you approach it?",
+    options: [
+      { text: "Systematize its contents to advance engineering, commerce, and societal knowledge.", primary: "Lyricia", secondary: "Oray" },
+      { text: "Guard its secrets fiercely, sharing arcane wisdom only with disciplined mages who prove worthy.", primary: "Oray", secondary: "Ay" },
+      { text: "Wear a sacred mask and consult the Weaver of Fate before deciding if the knowledge should ever be unsealed.", primary: "Ay", secondary: "Slavyna" },
+      { text: "Analyze its historical timeline to map out the cosmic laws governing space and mortality.", primary: "Krayvuk", secondary: "Lyricia" }
+    ]
+  },
+  {
+    id: 16,
+    question: "What is your perspective on societal laws, contracts, and legal systems?",
+    options: [
+      { text: "Laws are rigid structures meant to be exploited; a contract is only as strong as its cleverest loophole.", primary: "Kayzoku", secondary: "Slavyna" },
+      { text: "Laws are meaningless constraints that suppress the natural, beautiful chaos of existence.", primary: "Psyon", secondary: "Kayzoku" },
+      { text: "Laws should honor natural balance and elemental harmony above arbitrary mortal authority.", primary: "Ousava", secondary: "Ay" },
+      { text: "Laws should foster honorable competition, martial virtue, and artistic integrity.", primary: "Celeste", secondary: "Oray" }
+    ]
+  },
+  {
+    id: 17,
+    question: "What drives your adventurer’s ultimate personal motivation?",
+    options: [
+      { text: "Uncovering deep secrets, mastering desire, and wielding subtle influence over others.", primary: "Slavyna", secondary: "Psyon" },
+      { text: "Experiencing the raw thrill of high-stakes gambling, wild trickery, and total freedom.", primary: "Kayzoku", secondary: "Celeste" },
+      { text: "Creating masterworks of art, winning combat grand prizes, and leaving a legendary legacy.", primary: "Celeste", secondary: "Ousava" },
+      { text: "Protecting living ecosystems, healing the suffering, and nurturing vibrant communities.", primary: "Ousava", secondary: "Lyricia" }
+    ]
+  },
+  {
+    id: 18,
+    question: "How do you feel about wearing disguises, maintaining double lives, or keeping secrets?",
+    options: [
+      { text: "Masks are sacred items worn during Fate's Masquerade to display spiritual alignment and honor destiny.", primary: "Ay", secondary: "Slavyna" },
+      { text: "Concealment is strategic—keeping secrets gives you ultimate leverage over enemies and allies alike.", primary: "Slavyna", secondary: "Krayvuk" },
+      { text: "Disguises are chaotic pranks to confuse authorities and keep people guessing in the grand game of life.", primary: "Psyon", secondary: "Kayzoku" },
+      { text: "Living openly and passionately is true strength; why hide who you are on the field of glory?", primary: "Celeste", secondary: "Oray" }
+    ]
+  },
+  {
+    id: 19,
+    question: "When faced with a cosmic dilemma where free will and destiny clash...",
+    options: [
+      { text: "Destiny is woven on the Loom of Fate; every thread, emotion, and action is bound to cosmic balance.", primary: "Ay", secondary: "Ousava" },
+      { text: "Choice is paramount; mages and dragon lords must master arcane discipline to forge their own destiny.", primary: "Oray", secondary: "Lyricia" },
+      { text: "Destiny is an observable equation across space and time, waiting to be calculated and mastered.", primary: "Krayvuk", secondary: "Ay" },
+      { text: "Fate is a farce; reality is an unpredictable nightmare of madness where nothing is fixed.", primary: "Psyon", secondary: "Kayzoku" }
+    ]
+  },
+  {
+    id: 20,
+    question: "Which core motto best captures your adventurer's personal ethos?",
+    options: [
+      { text: "Knowledge is power, and organized industry brings true prosperity.", primary: "Lyricia", secondary: "Oray" },
+      { text: "Every action, emotion, and life thread is bound to the sacred balance of Destiny.", primary: "Ay", secondary: "Ousava" },
+      { text: "Space and time are dimensions to be measured, observed, and controlled.", primary: "Krayvuk", secondary: "Lyricia" },
+      { text: "Arcane mastery and noble discipline transcend mortal constraints.", primary: "Oray", secondary: "Celeste" }
+    ]
+  }
+];
 
     // State Variables
     let player = "";
