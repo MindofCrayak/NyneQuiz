@@ -310,79 +310,160 @@
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
     const GOOGLE_SHEET_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
 
-    // Deity Database with B&W direct PNG assets
+// 9 Deities Lore & Canonical Results Data
     const DEITIES = {
       "Lyricia": {
-        alignment: "Lawful Good",
-        domains: "Knowledge, Money, Engineering",
-        color: "#ea32ca",
-        fontClass: "font-Lyricia",
-        imgBW: "https://i.imgur.com/wC03uZI.png",
-        desc: "Scholar and economic mind who values law, structure, and organized industry."
+        name: "Lyricia",
+        title: "Patron of Industry & Truth",
+        domains: "Commerce, Engineering, Enlightenment, Healing",
+        motto: "Knowledge is power, and organized industry brings true prosperity.",
+        color: "#ea32caff",
+        font: "Aguafina Script",
+        image: "https://i.imgur.com/MYVDHjH.png",
+        description: "Overseeing the Rycia Providence on Konran as well as the bustling moons of Lona Uyn. Her followers pioneer subterranean labs, oversee trade mints, and seek truth and healing through structured enlightenment.",
+        factions: [
+          "Institute of Enlightenment Scholars",
+          "Oryginators of Zorm",
+          "Treasurers of Kelth",
+          "Sage Pryestesshood",
+          "Coryal Collective"
+        ]
       },
       "Oray": {
-        alignment: "Lawful Neutral",
-        domains: "Magic, Dragons, Choice",
-        color: "#b7b7b7",
-        fontClass: "font-Oray",
-        imgBW: "https://i.imgur.com/ZEb0ehs.png",
-        desc: "Arcane perfectionist who respects discipline, rules, and individual discovery."
+        name: "Oray",
+        title: "Master of Magic & Arcane Arts",
+        domains: "Raw Magic, Alteration, Dragon Lore, Spellcraft",
+        motto: "Arcane mastery and noble discipline transcend mortal constraints.",
+        color: "#b7b7b7ff",
+        font: "Berkshire Swash",
+        image: "https://i.imgur.com/SxOctek.png",
+        description: "Ruler over raw magic and dragonwatchers. Oray's followers push the boundaries of reality through spellcraft, transfiguration, and sacred dragon lore.",
+        factions: [
+          "Practitioners of Magic",
+          "Dragon Worshippers",
+          "Substantyaliti",
+          "Causalyti",
+          "Superstitionists"
+        ]
       },
       "Ousava": {
-        alignment: "Neutral Good",
-        domains: "Life, Elements, Creation",
-        color: "#9900ff",
-        fontClass: "font-Ousava",
-        imgBW: "https://i.imgur.com/D0bsg44.png",
-        desc: "Nurturing protector of nature, community, and elemental balance."
+        name: "Ousava",
+        title: "The World-Mother",
+        domains: "Life, Nature, Elements, Harmony, Tides",
+        motto: "Protect the living ecosystems and nurture the sacred hearth.",
+        color: "#9900ffff",
+        font: "Allura",
+        image: "https://i.imgur.com/80inyux.png",
+        description: "The primary architect of Konran who smashed the gods together in her ink cocoon to navigate the Voyd. Ousava commands elemental life, ocean tides, and natural balance across the planes.",
+        factions: [
+          "The Kabal of Lyfe",
+          "Servants of the Seas",
+          "The Elders of Earth",
+          "The Ayr Acolytes",
+          "The Fyre Fyends"
+        ]
       },
       "Ay": {
-        alignment: "True Neutral",
-        domains: "Love, Mask, Fate, Balance, Destiny",
-        color: "#ff9900",
-        fontClass: "font-Ay",
-        imgBW: "https://i.imgur.com/2FC2FFJ.png",
-        desc: "Mystical keeper who accepts fate, wears sacred masks, and maintains cosmic balance."
+        name: "Ay",
+        title: "Weaver of Fate & Ayan",
+        domains: "Fate, Cosmic Balance, Destiny, Time",
+        motto: "Every action, emotion, and life thread is bound to the eternal balance of Destiny.",
+        color: "#ff9900ff",
+        font: "Mystery Quest",
+        image: "https://i.imgur.com/E7AYFxL.png",
+        description: "Keeper of the sun-world Ayan and weaver of light threads. Ay guards the secrets of destiny, measuring the statistics of time and executing cosmic balance without mortal interference.",
+        factions: [
+          "Foremen of Fate",
+          "Agents of the Arrow",
+          "Dreamers of Destiny",
+          "Curators of Cause",
+          "Exhibitors of Effect"
+        ]
       },
       "Kayzoku": {
-        alignment: "Chaotic Neutral",
-        domains: "Trickery, Law, Chains, Gambling",
-        color: "#8e7cc3",
-        fontClass: "font-Kayzoku",
-        imgBW: "https://i.imgur.com/wV0pk9C.png",
-        desc: "Gambler and thrill-seeker who loves rules only for the loopholes they provide."
+        name: "Kayzoku",
+        title: "Lord of Kay-Kee & Master of Chance",
+        domains: "Chaos, Trickery, Enlightenment, High Stakes",
+        motto: "Nothing is fixed except the roll of the dice and the thrill of taking a chance.",
+        color: "#8e7cc3ff",
+        font: "Neucha",
+        image: "https://i.imgur.com/CBojgKL.png",
+        description: "Ruler of the divided world of Kay-Kee. Kayzoku thrives where chaos rules, teaching his followers that life is a grand game of trickery, balance, and seizing fortune.",
+        factions: [
+          "Link of Trickery",
+          "Link of Balance",
+          "Link of Enlightenment",
+          "Link of Deception",
+          "Link of Order"
+        ]
       },
       "Celeste": {
-        alignment: "Chaotic Good",
-        domains: "Arts, Competition, Hearth, War",
-        color: "#00cccc",
-        fontClass: "font-Celeste",
-        imgBW: "https://i.imgur.com/ghulMS3.png",
-        desc: "Passionate warrior and artist, competitive, welcoming, and glory-driven."
+        name: "Celeste",
+        title: "Divine Champion of Expression & Glory",
+        domains: "Martial Virtue, Athletics, Warfare, Artistic Expression",
+        motto: "Life is a grand arena for glory, artistic expression, and athletic competition!",
+        color: "#00ccccff",
+        font: "New Rocker",
+        image: "https://i.imgur.com/I5sUz2U.png",
+        description: "Patron of physical mastery, warfare, hearth, and artistic expression. Her followers honor the divine through heroic feats, masterworks of art, and honorable combat.",
+        factions: [
+          "Order of Expression",
+          "Order of Warfare",
+          "Order of Athletics",
+          "Order of the Hearth",
+          "Order of Theory"
+        ]
       },
       "Psyon": {
-        alignment: "Chaotic Evil",
-        domains: "Madness, Pain, Chaos",
-        color: "#eeeeee",
-        fontClass: "font-Psyon",
-        imgBW: "https://i.imgur.com/3KOht2B.png",
-        desc: "Agent of chaos and unpredictable force who thrives in disorder and fracturing reality."
+        name: "Psyon",
+        title: "Lord of Madness & Duathyer",
+        domains: "Chaos, Illusion, Madness, Memory Manipulation",
+        motto: "Reality is an unpredictable storm—embrace the beauty of raw chaos.",
+        color: "#eeeeeeff",
+        font: "Creepster",
+        image: "https://i.imgur.com/RyHT82y.png",
+        description: "Ruler of the dark, ice-bound plane of Duathyer. Psyon bends reality through unhinged paradox, memory theft, wild illusions, and pure anarchy.",
+        factions: [
+          "Lunaci",
+          "Dementia",
+          "Manya",
+          "Delusyona",
+          "Hysteria"
+        ]
       },
       "Krayvuk": {
-        alignment: "Neutral Evil",
-        domains: "Death, Space, Time, Science",
-        color: "#00ff00",
-        fontClass: "font-Krayvuk",
-        imgBW: "https://i.imgur.com/DEVvCnO.png",
-        desc: "Analytical observer fascinated by time, celestial mechanics, space, and mortality."
+        name: "Krayvuk",
+        title: "Lord of Kestox & Voyd Navigator",
+        domains: "Space, Time, Clockwork Mechanics, Mortality",
+        motto: "Space and time are dimensions to be measured, observed, and controlled.",
+        color: "#00ff00ff",
+        font: "Press Start 2P",
+        image: "https://i.imgur.com/A256PSY.png",
+        description: "Master of temporal mechanics and ruler of the clockwork battle station Kestox. Krayvuk navigates the Voyd, studies the stars, and commands time and technology.",
+        factions: [
+          "Vergence (Lords of Time)",
+          "Cyrcutry System",
+          "Expanz",
+          "Necros",
+          "Apogee"
+        ]
       },
       "Slavyna": {
-        alignment: "Lawful Evil",
-        domains: "Sex, Lust, Vengeance, Secrets",
-        color: "#ff0000",
-        fontClass: "font-Slavyna",
-        imgBW: "https://i.imgur.com/eJjLJm7.png",
-        desc: "Charming, secretive strategist who uses seduction, masks, and leverage to extract power."
+        name: "Slavyna",
+        title: "Her Imperial Viciousness & The Dark Mother",
+        domains: "Hidden Secrets, Leverage, Blood Magic, Covert Action",
+        motto: "Concealment is strategy; secrets are the ultimate leverage.",
+        color: "#ff0000ff",
+        font: "Ruthie",
+        image: "https://i.imgur.com/YJBmwFe.png",
+        description: "Ruler of Synthelavor with an iron hoof. Slavyna commands shadow academies, blood magic, and covert networks to wield ultimate leverage across the planes.",
+        factions: [
+          "Spyder Systerhood",
+          "Brotherhood of Blood",
+          "School of Shadows",
+          "The Dark Legion",
+          "Lust Wraiths"
+        ]
       }
     };
 
