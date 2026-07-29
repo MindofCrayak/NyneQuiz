@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fated Deity Quiz of Konran</title>
+  
+  <!-- html2pdf for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Google Fonts for God Typography & Branding -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Belleza&family=Berkshire+Swash&family=Creepster&family=Mystery+Quest&family=Neucha&family=New+Rocker&family=Press+Start+2P&family=Ruthie&display=swap" rel="stylesheet">
+
+  <style>
+    /* Custom Brand Fonts from Konran Asset Tracker */
+    @font-face {
+      font-family: 'TotallyGothic';
+      src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TotallyGothic/TotallyGothic%20Regular/TotallyGothic%20Regular.ttf');
+    }
+    @font-face {
+      font-family: 'TemaCantante';
+      src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemaCantante/TemaCantante%20Regular/TemaCantante%20Regular.ttf');
+    }
+    @font-face {
+      font-family: 'TemplateGothic';
+      src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemplateGothic/TemplateGothic%20Regular/TemplateGothic%20Regular.ttf');
+    }
+
+    /* Palette Variables */
+    :root {
+      --gold: #d4af37;
+      --mint: #bcdbb0;
+      --lavender: #ded7f0;
+      --teal: #0d9488;
+      --purple: #540162;
+      --dark: #111827;
+      --dark-teal: #03444e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Belleza', Georgia, serif;
+      background: var(--dark) url('https://imgur.com/rbA1bPE') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--lavender);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container Card with Konran Accents */
+    .app-container {
+      width: 90%;
+      max-width: 750px;
+      margin: 30px auto;
+      background: rgba(17, 24, 39, 0.92);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(212, 175, 55, 0.2);
+      position: relative;
+    }
+
+    .top-accent {
+      width: 100%;
+      height: 25px;
+      background: url('https://imgur.com/MMxU4lZ') no-repeat center center;
+      background-size: contain;
+      margin-bottom: 15px;
+    }
+
+    .bottom-accent {
+      width: 100%;
+      height: 25px;
+      background: url('https://imgur.com/ACKUVGF') no-repeat center center;
+      background-size: contain;
+      margin-top: 25px;
+    }
+
+    h1.title {
+      font-family: 'TotallyGothic', 'Georgia', serif;
+      color: var(--gold);
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 10px 0 5px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .subtitle {
+      text-align: center;
+      font-family: 'TemaCantante', serif;
+      color: var(--mint);
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    /* Form Inputs */
+    .input-group { margin-bottom: 20px; }
+    label {
+      display: block;
+      color: var(--gold);
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      background: rgba(3, 68, 78, 0.5);
+      border: 1px solid var(--teal);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(135deg, var(--gold), #997a15);
+      color: #111;
+      font-family: 'TemplateGothic', sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+      margin-top: 15px;
+    }
+    .btn:hover {
+      filter: brightness(1.2);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* Quiz Styling */
+    .progress-bar-bg {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      height: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .progress-bar-fill {
+      background: var(--gold);
+      height: 100%;
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question-title {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      background: rgba(3, 68, 78, 0.4);
+      border: 1px solid var(--teal);
+      color: var(--lavender);
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover {
+      background: rgba(13, 148, 138, 0.4);
+      border-color: var(--gold);
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* God Font Classes */
+    .font-Oray { font-family: 'Berkshire Swash', cursive; }
+    .font-Ousava { font-family: 'Allura', cursive; }
+    .font-Lyricia { font-family: 'Aguafina Script', cursive; }
+    .font-Celeste { font-family: 'New Rocker', cursive; }
+    .font-Ay { font-family: 'Mystery Quest', cursive; }
+    .font-Kayzoku { font-family: 'Neucha', cursive; }
+    .font-Krayvuk { font-family: 'Press Start 2P', monospace; font-size: 0.9rem; }
+    .font-Slavyna { font-family: 'Ruthie', cursive; font-size: 1.5rem; }
+    .font-Psyon { font-family: 'Creepster', cursive; }
+
+    /* Dossier Printable View */
+    #dossier {
+      background: #0d131d;
+      border: 3px double var(--gold);
+      padding: 25px;
+      border-radius: 8px;
+      color: var(--lavender);
+    }
+    .god-badge-img {
+      max-width: 160px;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="top-accent"></div>
+
+    <!-- Step 1: User Registration -->
+    <div id="step-intro">
+      <h1 class="title">The Fated Deity Quiz</h1>
+      <div class="subtitle">Konran System Pilgrim Ledger</div>
+      <p style="text-align: center; line-height: 1.5;">
+        Welcome, traveler. Discover which of <em>The Nyne</em> holds claim to your soul before embarking on your journey through Konran.
+      </p>
+      <hr style="border-color: var(--teal); margin: 20px 0;">
+      
+      <div class="input-group">
+        <label for="playerName">Player Name</label>
+        <input type="text" id="playerName" placeholder="e.g. Alex" required>
+      </div>
+      <div class="input-group">
+        <label for="charName">Character Name</label>
+        <input type="text" id="charName" placeholder="e.g. Vaelen the Bold" required>
+      </div>
+
+      <button class="btn" onclick="startQuiz()">Begin the Trials</button>
+    </div>
+
+    <!-- Step 2: Interactive Quiz -->
+    <div id="step-quiz" class="hidden">
+      <div class="progress-bar-bg">
+        <div id="progress-fill" class="progress-bar-fill"></div>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--mint); margin-bottom: 10px;" id="question-count">Question 1 of 20</div>
+      
+      <div id="question-text" class="question-title"></div>
+      <div id="options-container"></div>
+    </div>
+
+    <!-- Step 3: Result & Dossier -->
+    <div id="step-result" class="hidden">
+      <div id="dossier">
+        <h2 style="text-align: center; color: var(--gold); font-family: 'TotallyGothic'; margin-top: 0;">— Divine Patron Dossier —</h2>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--teal); padding-bottom: 10px; margin-bottom: 15px;">
+          <div><strong>Player:</strong> <span id="res-player"></span></div>
+          <div><strong>Character:</strong> <span id="res-char"></span></div>
+        </div>
+
+        <div style="text-align: center;">
+          <img id="god-img" class="god-badge-img" src="" alt="Patron Deity Image">
+          <h2 id="god-title" style="margin: 10px 0 5px 0;"></h2>
+          <div id="god-alignment" style="color: var(--mint); font-weight: bold; margin-bottom: 5px;"></div>
+          <div id="god-domains" style="font-style: italic; color: var(--gold); margin-bottom: 15px;"></div>
+        </div>
+
+        <p id="god-desc" style="line-height: 1.5; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 6px;"></p>
+
+        <h4 style="color: var(--gold); margin-bottom: 8px;">Full Alignment Tally:</h4>
+        <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px;"></div>
+      </div>
+
+      <button class="btn" onclick="downloadPDF()">Download Holy Dossier (PDF)</button>
+    </div>
+
+    <div class="bottom-accent"></div>
+  </div>
+
+  <script>
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+    const GOOGLE_SHEET_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+    // Deity Database
+    const DEITIES = {
+      "Lyricia": {
+        alignment: "Lawful Good",
+        domains: "Knowledge, Money, Engineering",
+        color: "#ea32ca",
+        fontClass: "font-Lyricia",
+        imgColor: "https://imgur.com/MYVDHjH",
+        desc: "Scholar and economic mind who values law, structure, and organized industry."
+      },
+      "Oray": {
+        alignment: "Lawful Neutral",
+        domains: "Magic, Dragons, Choice",
+        color: "#b7b7b7",
+        fontClass: "font-Oray",
+        imgColor: "https://imgur.com/SxOctek",
+        desc: "Arcane perfectionist who respects discipline, rules, and individual discovery."
+      },
+      "Ousava": {
+        alignment: "Neutral Good",
+        domains: "Life, Elements, Creation",
+        color: "#9900ff",
+        fontClass: "font-Ousava",
+        imgColor: "https://imgur.com/80inyux",
+        desc: "Nurturing protector of nature, community, and elemental balance."
+      },
+      "Ay": {
+        alignment: "True Neutral",
+        domains: "Love, Mask, Fate, Balance, Destiny",
+        color: "#ff9900",
+        fontClass: "font-Ay",
+        imgColor: "https://imgur.com/E7AYFxL",
+        desc: "Mystical keeper who accepts fate, wears sacred masks, and maintains cosmic balance."
+      },
+      "Kayzoku": {
+        alignment: "Chaotic Neutral",
+        domains: "Trickery, Law, Chains, Gambling",
+        color: "#8e7cc3",
+        fontClass: "font-Kayzoku",
+        imgColor: "https://imgur.com/CBojgKL",
+        desc: "Gambler and thrill-seeker who loves rules only for the loopholes they provide."
+      },
+      "Celeste": {
+        alignment: "Chaotic Good",
+        domains: "Arts, Competition, Hearth, War",
+        color: "#00cccc",
+        fontClass: "font-Celeste",
+        imgColor: "https://imgur.com/I5sUz2U",
+        desc: "Passionate warrior and artist, competitive, welcoming, and glory-driven."
+      },
+      "Psyon": {
+        alignment: "Chaotic Evil",
+        domains: "Madness, Pain, Chaos",
+        color: "#eeeeee",
+        fontClass: "font-Psyon",
+        imgColor: "https://imgur.com/RyHT82y",
+        desc: "Agent of chaos and unpredictable force who thrives in disorder and fracturing reality."
+      },
+      "Krayvuk": {
+        alignment: "Neutral Evil",
+        domains: "Death, Space, Time, Science",
+        color: "#00ff00",
+        fontClass: "font-Krayvuk",
+        imgColor: "https://imgur.com/A256PSY",
+        desc: "Analytical observer fascinated by time, celestial mechanics, space, and mortality."
+      },
+      "Slavyna": {
+        alignment: "Lawful Evil",
+        domains: "Sex, Lust, Vengeance, Secrets",
+        color: "#ff0000",
+        fontClass: "font-Slavyna",
+        imgColor: "https://imgur.com/YJBmwFe",
+        desc: "Charming, secretive strategist who uses seduction, masks, and leverage to extract power."
+      }
+    };
+
+    // 20 Questions Data
+    const QUESTIONS = [
+      { id: 1, title: "You discover an ancient tome containing every detail of your future life. Do you read it?", options: [{ text: "Read it to change what I don't like. Destiny is a puzzle to be solved and optimized.", deities: ["Oray", "Lyricia"] }, { text: "Never dare look. The threads of Fate are sacred, and meddling with destiny brings ruin.", deities: ["Ay"] }, { text: "Study its structure strictly as a scientific phenomenon. Time and space follow observable, logical laws.", deities: ["Krayvuk"] }, { text: "Burn it instantly. Life is a gamble, and knowing the outcome ruins the thrill!", deities: ["Kayzoku"] }] },
+      { id: 2, title: "How do you believe high magic and arcane arts should be taught to mortals?", options: [{ text: "Earned through discipline, research, and individual discovery by those willing to work for it.", deities: ["Oray"] }, { text: "Systematized, standardized, and distributed to fuel engineering and societal growth.", deities: ["Lyricia"] }, { text: "Nurtured organically as an extension of natural life and elemental balance.", deities: ["Ousava"] }, { text: "Guarded in secret academies, shared only with those who can leverage it for power.", deities: ["Slavyna"] }] },
+      { id: 3, title: "Exploring a long-lost, cavernous library filled with forgotten knowledge sounds like...", options: [{ text: "The ultimate adventure—knowledge is the greatest wealth in existence.", deities: ["Lyricia", "Oray"] }, { text: "A worthy journey, provided it holds ancient artistic works or heroic histories.", deities: ["Celeste"] }, { text: "A tedious trap—I'd rather be in a lively tavern or high-stakes hall of chance.", deities: ["Kayzoku"] }, { text: "A dark, unsettling tomb better suited for unearthing dark secrets.", deities: ["Krayvuk", "Slavyna"] }] },
+      { id: 4, title: "A wealthy merchant in the crowded market unknowingly drops his heavy purse of gold. Do you...", options: [{ text: "Pick it up and return it to him immediately. Order and honesty keep society whole.", deities: ["Lyricia", "Ousava"] }, { text: "Pocket it before anyone notices—fortune favors the swift!", deities: ["Kayzoku"] }, { text: "Return it, but subtly use the gesture to extract a future secret or favor.", deities: ["Slavyna"] }, { text: "Leave it on the floor. Wealth flows where destiny dictates.", deities: ["Ay"] }] },
+      { id: 5, title: "You discover the secret alchemical formula to transmute lead into pure gold. What is your reaction?", options: [{ text: "Share it publicly to build grand cities, schools, and mints.", deities: ["Lyricia"] }, { text: "Keep it locked away—flooding the world with wealth disrupts divine balance.", deities: ["Ay"] }, { text: "Use it in secret to fund your private experiments and strategic goals.", deities: ["Krayvuk"] }, { text: "Flood the market instantly just to watch the economic chaos unfold!", deities: ["Psyon"] }] },
+      { id: 6, title: "A close friend finds themselves homeless and destitute. How do you assist them?", options: [{ text: "Welcome them into your home with open arms and a warm hearth.", deities: ["Celeste", "Ousava"] }, { text: "Offer them a structured contract or work in your business so they earn their way.", deities: ["Lyricia"] }, { text: "Hope they find help elsewhere; personal hardship builds survival instincts.", deities: ["Krayvuk"] }, { text: "Help them track down and exact vengeance on whoever ruined them.", deities: ["Slavyna"] }] },
+      { id: 7, title: "What does a \"perfect day\" look like to your adventurer?", options: [{ text: "Freshly brewed tea, quiet surroundings, and a deep tome to study.", deities: ["Lyricia", "Oray"] }, { text: "Rigorous combat training, archery, horseback riding, and a grand feast.", deities: ["Celeste"] }, { text: "Indulging in high-stakes games, masked revelry, and unpredictable thrills.", deities: ["Kayzoku", "Slavyna"] }, { text: "Wandering forgotten ruins or quiet graveyards to commune with cosmic forces.", deities: ["Krayvuk", "Ay"] }] },
+      { id: 8, title: "You are pulled over by town guards for speeding or breaking local ordinances. What is your go-to maneuver?", options: [{ text: "Attempt to charm, flirt, or use charisma to slide out of trouble.", deities: ["Slavyna"] }, { text: "Pay the fine or accept the ticket—you broke the law, after all.", deities: ["Oray", "Lyricia"] }, { text: "Challenge the guard to a quick wager or game of chance for your freedom!", deities: ["Kayzoku"] }, { text: "Outsmart them with legalese or technical loopholes in their own rules.", deities: ["Kayzoku", "Krayvuk"] }] },
+      { id: 9, title: "Everyone said you could never make any real friends, so you headed to the...", options: [{ text: "Tavern to win people over with games, drinks, and lively stories.", deities: ["Celeste", "Kayzoku"] }, { text: "Graveyard to commune with the spirits who don't chatter endlessly.", deities: ["Krayvuk"] }, { text: "Underground guild hall where loyalty is bought with secrets.", deities: ["Slavyna"] }, { text: "Wilds or gardens to surround yourself with nature and creatures.", deities: ["Ousava"] }] },
+      { id: 10, title: "When entering a competition or race, what matters most?", options: [{ text: "Winning at all costs through athletic mastery or tactical brilliance.", deities: ["Celeste"] }, { text: "Enjoying the journey, the camaraderie, and the experience.", deities: ["Ousava"] }, { text: "Outwitting your opponents with clever tricks or hidden advantages.", deities: ["Kayzoku", "Slavyna"] }, { text: "Collecting data on your performance to improve future calculations.", deities: ["Krayvuk", "Lyricia"] }] },
+      { id: 11, title: "Someone you trusted deeply betrays you to your enemies. What is your response?", options: [{ text: "Plot a meticulous, secretive scheme to strike back twice as hard.", deities: ["Slavyna"] }, { text: "Challenge them directly in open combat or public competition.", deities: ["Celeste"] }, { text: "Focus on restoration and healing. Forgive where possible.", deities: ["Ousava"] }, { text: "Accept the betrayal as a necessary thread in the grand tapestry of Fate.", deities: ["Ay"] }] },
+      { id: 12, title: "How do you view rigid societal laws, contracts, and legal systems?", options: [{ text: "Essential frameworks that protect civilization, foster trade, and structure growth.", deities: ["Lyricia"] }, { text: "Respected guidelines, though personal choices and arcane mastery transcend mortal codes.", deities: ["Oray"] }, { text: "Tools meant to be exploited or bent. Laws are only interesting if there’s a clever loophole!", deities: ["Kayzoku"] }, { text: "Meaningless constraints that suppress the natural, beautiful chaos of existence.", deities: ["Psyon"] }] },
+      { id: 13, title: "When embarking on a grand new project or build, what is your primary inspiration?", options: [{ text: "Creating a masterwork of art, expression, or architectural beauty that inspires awe.", deities: ["Celeste"] }, { text: "Constructing an efficient, highly profitable machine or technological advancement.", deities: ["Lyricia"] }, { text: "Unlocking fundamental scientific laws governing space, time, and physical forces.", deities: ["Krayvuk"] }, { text: "Nurturing organic life and natural harmony, working alongside the elements.", deities: ["Ousava"] }] },
+      { id: 14, title: "A mysterious artifact capable of bending reality falls into your hands. How do you handle it?", options: [{ text: "Study its arcane properties systematically to expand the boundaries of magic.", deities: ["Oray"] }, { text: "Secure it in a high-tech vault or treasury to prevent economic and political instability.", deities: ["Lyricia"] }, { text: "Dissect its mechanical and temporal structure to understand its clockwork mechanics.", deities: ["Krayvuk"] }, { text: "Unleash its power unpredictably just to see how reality bends and fractures!", deities: ["Psyon"] }] },
+      { id: 15, title: "You attend the grand festival celebrating the alignment of Konran's twin moons. Where are you found?", options: [{ text: "At the high-stakes gambling tables, risking gold on games of chance and skill.", deities: ["Kayzoku"] }, { text: "In a dimly lit alcove wearing an ornate mask, exchanging whispers and gathering leverage.", deities: ["Slavyna", "Ay"] }, { text: "In the center of the court, participating in dance, song, or martial exhibitions.", deities: ["Celeste"] }, { text: "Observing the celestial mechanics from an observatory, calculating the astronomical alignment.", deities: ["Krayvuk"] }] },
+      { id: 16, title: "How do you feel about wearing masks or maintaining a double life?", options: [{ text: "Masks are sacred items that reveal our true spiritual alignment and honor Destiny.", deities: ["Ay"] }, { text: "Concealment is strategic. Keeping secrets gives you ultimate leverage over others.", deities: ["Slavyna"] }, { text: "Why hide who you are? True strength comes from living openly and passionately!", deities: ["Celeste"] }, { text: "A disguise is just a fun trick to keep people guessing during the grand game of life.", deities: ["Kayzoku"] }] },
+      { id: 17, title: "What is your perspective on death and the passage of time?", options: [{ text: "Death is a natural transition, leading into new life or soul filtration in Konran.", deities: ["Ousava"] }, { text: "Space and time are measurable dimensions to be observed, manipulated, and mastered.", deities: ["Krayvuk"] }, { text: "Death is the fixed end-point woven onto the loom long before our birth.", deities: ["Ay"] }, { text: "Time is an agonizing burden, and death is merely a portal into chaotic madness.", deities: ["Psyon"] }] },
+      { id: 18, title: "When an unexpected natural disaster or crisis strikes, how do you react?", options: [{ text: "Organize an orderly, logical response using structure and engineered defenses.", deities: ["Lyricia"] }, { text: "Rally the people with martial bravery to protect hearth and home.", deities: ["Celeste"] }, { text: "Embrace the wild unpredictability and adapt fluidly—disorder reveals true nature.", deities: ["Kayzoku", "Psyon"] }, { text: "Retreat into hidden subterranean safe-havens until the surface storm clears.", deities: ["Slavyna"] }] },
+      { id: 19, title: "Which environment feels most like home to your character?", options: [{ text: "Lush, vibrant rainforests or ocean coastlines teeming with untamed life.", deities: ["Ousava"] }, { text: "Volcanic peaks, steam labs, and grand dragon-rider roosts.", deities: ["Oray"] }, { text: "Subterranean crystal lattices, mints, and bustling trade hubs.", deities: ["Lyricia"] }, { text: "Secretive underground sanctuaries or opulent moonlit pleasure palaces.", deities: ["Slavyna"] }] },
+      { id: 20, title: "Which core motto best captures your adventurer's personal ethos?", options: [{ text: "\"Knowledge is power, and organized industry brings true prosperity.\"", deities: ["Lyricia"] }, { text: "\"Life is a grand arena for glory, artistic expression, and athletic competition!\"", deities: ["Celeste"] }, { text: "\"Nothing is fixed except the roll of the dice and the thrill of taking a chance.\"", deities: ["Kayzoku"] }, { text: "\"Every action, emotion, and life thread is bound to the eternal balance of Destiny.\"", deities: ["Ay"] }] }
+    ];
+
+    // State Variables
+    let player = "";
+    let character = "";
+    let currentQ = 0;
+    let scores = { Lyricia: 0, Oray: 0, Ousava: 0, Ay: 0, Kayzoku: 0, Celeste: 0, Psyon: 0, Krayvuk: 0, Slavyna: 0 };
+
+    function startQuiz() {
+      player = document.getElementById("playerName").value.trim();
+      character = document.getElementById("charName").value.trim();
+      if (!player || !character) {
+        return alert("Please enter both Player Name and Character Name!");
+      }
+
+      document.getElementById("step-intro").classList.add("hidden");
+      document.getElementById("step-quiz").classList.remove("hidden");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[currentQ];
+      document.getElementById("question-count").innerText = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+      document.getElementById("progress-fill").style.width = `${((currentQ) / QUESTIONS.length) * 100}%`;
+      document.getElementById("question-text").innerText = `${q.id}. ${q.title}`;
+
+      const optsContainer = document.getElementById("options-container");
+      optsContainer.innerHTML = "";
+
+      q.options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = opt.text;
+        btn.onclick = () => selectOption(opt.deities);
+        optsContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(deities) {
+      deities.forEach(d => {
+        if (scores.hasOwnProperty(d)) scores[d]++;
+      });
+
+      currentQ++;
+      if (currentQ < QUESTIONS.length) {
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      document.getElementById("step-quiz").classList.add("hidden");
+      document.getElementById("step-result").classList.remove("hidden");
+
+      // Calculate winning deity
+      let highestDeity = "Ay";
+      let maxScore = -1;
+      for (const [god, pts] of Object.entries(scores)) {
+        if (pts > maxScore) {
+          maxScore = pts;
+          highestDeity = god;
+        }
+      }
+
+      const info = DEITIES[highestDeity];
+
+      // Render Dossier View
+      document.getElementById("res-player").innerText = player;
+      document.getElementById("res-char").innerText = character;
+
+      const godTitle = document.getElementById("god-title");
+      godTitle.innerText = highestDeity;
+      godTitle.className = info.fontClass;
+      godTitle.style.color = info.color;
+      godTitle.style.fontSize = "2.8rem";
+
+      document.getElementById("god-alignment").innerText = `Alignment: ${info.alignment}`;
+      document.getElementById("god-domains").innerText = `Domains: ${info.domains}`;
+      document.getElementById("god-desc").innerText = info.desc;
+      document.getElementById("god-img").src = info.imgColor;
+
+      // Score breakdown list
+      const tallyBox = document.getElementById("scores-breakdown");
+      tallyBox.innerHTML = "";
+      for (const [god, pts] of Object.entries(scores)) {
+        const item = document.createElement("div");
+        item.innerHTML = `<span style="color:${DEITIES[god].color}; font-weight:bold;">${god}:</span> ${pts}`;
+        tallyBox.appendChild(item);
+      }
+
+      // Log results into Google Sheet
+      sendToGoogleSheet(highestDeity, info);
+    }
+
+    function sendToGoogleSheet(topGod, info) {
+      if (!GOOGLE_SHEET_SCRIPT_URL || GOOGLE_SHEET_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT_URL")) return;
+
+      const payload = {
+        player: player,
+        character: character,
+        deity: topGod,
+        alignment: info.alignment,
+        domains: info.domains,
+        scores: scores
+      };
+
+      // POST request to Google Apps Script
+      fetch(GOOGLE_SHEET_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Prevents CORS errors with Google Apps Script redirects
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(err => console.error("Database logging error:", err));
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById('dossier');
+      const opt = {
+        margin:       0.3,
+        filename:     `${character}_Patron_Dossier.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, backgroundColor: '#0d131d' },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
+</body>
+</html>
