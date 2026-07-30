@@ -795,17 +795,36 @@
       }).catch(err => console.error("Database logging error:", err));
     }
       
-    function downloadPDF() {
-      const element = document.getElementById('dossier');
-      const opt = {
-        margin:       0.3,
-        filename:     `${character}_Patron_Dossier.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, backgroundColor: '#050c12' },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-      html2pdf().set(opt).from(element).save();
-    }
+function downloadPDF() {
+  const element = document.getElementById('dossier');
+  if (!element) return;
+
+  // 1. Temporarily scroll to top so html2canvas doesn't create a massive black top offset
+  const currentScrollY = window.scrollY;
+  window.scrollTo(0, 0);
+
+  const opt = {
+    margin:       0.2,
+    filename:     `${character || 'Patron'}_Dossier.pdf`,
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { 
+      scale: 2, 
+      useCORS: true,        // FIX 1: Allows external Imgur images to render instead of blank circles
+      scrollY: 0,           // FIX 2: Prevents top black void offset
+      scrollX: 0,
+      backgroundColor: '#0a190f' // Matches your dark dossier background color
+    },
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  // 2. Render and save PDF, then restore your scroll position
+  html2pdf().set(opt).from(element).save().then(() => {
+    window.scrollTo(0, currentScrollY);
+  }).catch(err => {
+    console.error("PDF generation error:", err);
+    window.scrollTo(0, currentScrollY);
+  });
+}
   </script>
 </body>
 </html>
