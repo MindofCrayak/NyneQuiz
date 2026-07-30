@@ -28,15 +28,15 @@
       src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemplateGothic/TemplateGothic%20Regular/TemplateGothic%20Regular.ttf');
     }
 
-    /* Palette Variables */
+    /* Magitech Crystalpunk Palette Variables */
     :root {
-      --gold: #d4af37;
-      --mint: #bcdbb0;
+      --magitech-green: #39ff14;
+      --magitech-green-dim: #21990c;
+      --crystal-cyan: #00f0ff;
+      --crystal-cyan-dim: #006b72;
+      --hologram-bg: rgba(5, 12, 18, 0.85);
+      --space-dark: #020205;
       --lavender: #ded7f0;
-      --teal: #0d9488;
-      --purple: #540162;
-      --dark: #111827;
-      --dark-teal: #03444e;
     }
 
     * { box-sizing: border-box; }
@@ -45,7 +45,8 @@
       margin: 0;
       padding: 0;
       font-family: 'Belleza', Georgia, serif;
-      background: var(--dark) url('https://i.imgur.com/rbA1bPE') no-repeat center center fixed;
+      /* Maintained your space background */
+      background: var(--space-dark) url('https://i.imgur.com/rbA1bPE') no-repeat center center fixed;
       background-size: cover;
       color: var(--lavender);
       min-height: 100vh;
@@ -54,132 +55,181 @@
       align-items: center;
     }
 
-    /* Container Card with Konran Accents */
+    /* Main Container */
     .app-container {
       width: 90%;
       max-width: 750px;
-      margin: 30px auto;
-      background: rgba(17, 24, 39, 0.92);
-      border: 2px solid var(--gold);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(212, 175, 55, 0.2);
+      margin: 80px auto;
+      background: var(--hologram-bg);
+      border: 1px solid var(--magitech-green-dim);
+      border-radius: 4px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
       position: relative;
+      backdrop-filter: blur(4px);
     }
 
-    .top-accent {
-      width: 100%;
-      height: 25px;
-      background: url('https://i.imgur.com/MMxU4lZ') no-repeat center center;
+    /* --- BRANDING ASSETS --- */
+    .brand-top-bar {
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 90px;
+      background: url('https://i.imgur.com/SbzyxOw.png') no-repeat center center;
       background-size: contain;
-      margin-bottom: 15px;
+      z-index: 10;
+      pointer-events: none;
     }
 
-    .bottom-accent {
-      width: 100%;
-      height: 25px;
-      background: url('https://i.imgur.com/ACKUVGF') no-repeat center center;
+    .brand-corner {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: url('https://i.imgur.com/AwdofV6.png') no-repeat center center;
       background-size: contain;
-      margin-top: 25px;
+      z-index: 10;
+      pointer-events: none;
     }
+
+    .corner-bottom-right {
+      bottom: -40px;
+      right: -40px;
+      transform: rotate(180deg);
+    }
+
+    .corner-bottom-left {
+      bottom: -40px;
+      left: -40px;
+      transform: rotate(270deg); /* 180 + 90 degrees */
+    }
+    /* ----------------------- */
 
     h1.title {
       font-family: 'TotallyGothic', 'Georgia', serif;
-      color: var(--gold);
+      color: var(--magitech-green);
       text-align: center;
-      font-size: 2.5rem;
-      margin: 10px 0 5px 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      font-size: 3rem;
+      margin: 20px 0 5px 0;
+      text-shadow: 0 0 10px var(--magitech-green), 0 0 20px var(--magitech-green-dim);
+      letter-spacing: 2px;
     }
 
     .subtitle {
       text-align: center;
       font-family: 'TemaCantante', serif;
-      color: var(--mint);
+      color: var(--crystal-cyan);
       font-size: 1.2rem;
       margin-bottom: 25px;
+      text-shadow: 0 0 8px var(--crystal-cyan-dim);
     }
 
     /* Form Inputs */
     .input-group { margin-bottom: 20px; }
     label {
       display: block;
-      color: var(--gold);
+      color: var(--magitech-green);
       font-weight: bold;
       margin-bottom: 5px;
+      letter-spacing: 1px;
     }
     input[type="text"] {
       width: 100%;
       padding: 12px;
-      background: rgba(3, 68, 78, 0.5);
-      border: 1px solid var(--teal);
-      border-radius: 6px;
-      color: #fff;
-      font-size: 1rem;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid var(--crystal-cyan-dim);
+      border-radius: 2px;
+      color: var(--magitech-green);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--magitech-green);
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
     }
 
     /* Buttons */
     .btn {
-      background: linear-gradient(135deg, var(--gold), #997a15);
-      color: #111;
+      background: rgba(57, 255, 20, 0.1);
+      color: var(--magitech-green);
       font-family: 'TemplateGothic', sans-serif;
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
       padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
+      border: 1px solid var(--magitech-green);
+      border-radius: 2px;
       cursor: pointer;
       width: 100%;
       transition: all 0.2s ease;
       margin-top: 15px;
+      text-shadow: 0 0 5px var(--magitech-green);
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
     }
     .btn:hover {
-      filter: brightness(1.2);
-      box-shadow: 0 0 10px var(--gold);
+      background: rgba(57, 255, 20, 0.3);
+      box-shadow: 0 0 20px var(--magitech-green);
+      color: #fff;
     }
 
     /* Quiz Styling */
     .progress-bar-bg {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      height: 10px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--crystal-cyan-dim);
+      border-radius: 2px;
+      height: 8px;
       width: 100%;
       margin-bottom: 20px;
     }
     .progress-bar-fill {
-      background: var(--gold);
+      background: var(--magitech-green);
       height: 100%;
-      border-radius: 10px;
       width: 0%;
       transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--magitech-green);
     }
 
     .question-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #fff;
       margin-bottom: 20px;
-      line-height: 1.4;
+      line-height: 1.5;
+      text-shadow: 0 0 5px var(--crystal-cyan);
     }
 
     .option-btn {
       display: block;
       width: 100%;
-      background: rgba(3, 68, 78, 0.4);
-      border: 1px solid var(--teal);
+      background: rgba(0, 107, 114, 0.2);
+      border: 1px solid var(--crystal-cyan-dim);
       color: var(--lavender);
       padding: 14px 18px;
       margin-bottom: 12px;
-      border-radius: 8px;
+      border-radius: 2px;
       text-align: left;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
     .option-btn:hover {
-      background: rgba(13, 148, 138, 0.4);
-      border-color: var(--gold);
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--magitech-green);
       color: #fff;
+      box-shadow: inset 0 0 10px rgba(57, 255, 20, 0.2);
       transform: translateX(4px);
+    }
+    .option-btn::before {
+      content: '>';
+      color: var(--magitech-green);
+      margin-right: 10px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .option-btn:hover::before {
+      opacity: 1;
     }
 
     /* God Font Classes */
@@ -195,11 +245,12 @@
 
     /* Dossier Printable View */
     #dossier {
-      background: #0d131d;
-      border: 3px double var(--gold);
+      background: var(--hologram-bg);
+      border: 2px solid var(--magitech-green);
       padding: 25px;
-      border-radius: 8px;
+      border-radius: 2px;
       color: var(--lavender);
+      box-shadow: inset 0 0 20px rgba(57, 255, 20, 0.1);
     }
     .god-badge-img {
       max-width: 150px;
@@ -207,14 +258,14 @@
       display: block;
       margin: 15px auto;
       border-radius: 50%;
-      border: 3px solid var(--gold);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      border: 2px solid var(--magitech-green);
+      box-shadow: 0 0 20px var(--magitech-green-dim);
     }
 
     .secondary-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px dashed var(--teal);
-      border-radius: 6px;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px dashed var(--crystal-cyan);
+      border-radius: 2px;
       padding: 12px;
       margin: 15px 0;
       text-align: center;
@@ -226,35 +277,38 @@
 <body>
 
   <div class="app-container">
-    <div class="top-accent"></div>
+    <!-- Brand Accents -->
+    <div class="brand-top-bar"></div>
+    <div class="brand-corner corner-bottom-right"></div>
+    <div class="brand-corner corner-bottom-left"></div>
 
     <!-- Step 1: User Registration -->
     <div id="step-intro">
       <h1 class="title">The Fated Deity Quiz</h1>
       <div class="subtitle">Konran System Pilgrim Ledger</div>
-      <p style="text-align: center; line-height: 1.5;">
-        Welcome, traveler. Discover which of <em>The Nyne</em> holds claim to your soul before embarking on your journey through Konran.
+      <p style="text-align: center; line-height: 1.5; text-shadow: 0 0 5px #000;">
+        Welcome, traveler. Discover which of <em style="color: var(--magitech-green);">The Nyne</em> holds claim to your soul before embarking on your journey through Konran.
       </p>
-      <hr style="border-color: var(--teal); margin: 20px 0;">
+      <hr style="border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--crystal-cyan), transparent); margin: 25px 0;">
       
       <div class="input-group">
-        <label for="playerName">Player Name</label>
-        <input type="text" id="playerName" placeholder="e.g. Alex" required>
+        <label for="playerName">PLAYER DESIGNATION</label>
+        <input type="text" id="playerName" placeholder="Enter ID..." required>
       </div>
       <div class="input-group">
-        <label for="charName">Character Name</label>
-        <input type="text" id="charName" placeholder="e.g. Vaelen the Bold" required>
+        <label for="charName">AVATAR DESIGNATION</label>
+        <input type="text" id="charName" placeholder="Enter ID..." required>
       </div>
 
-      <button class="btn" onclick="startQuiz()">Begin the Trials</button>
+      <button class="btn" onclick="startQuiz()">INITIALIZE TRIALS</button>
     </div>
 
     <!-- Step 2: Interactive Quiz -->
     <div id="step-quiz" class="hidden">
+      <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; color: var(--crystal-cyan); margin-bottom: 10px; text-shadow: 0 0 5px var(--crystal-cyan-dim);" id="question-count">QUERY 1 OF 20</div>
       <div class="progress-bar-bg">
         <div id="progress-fill" class="progress-bar-fill"></div>
       </div>
-      <div style="font-size: 0.85rem; color: var(--mint); margin-bottom: 10px;" id="question-count">Question 1 of 20</div>
       
       <div id="question-text" class="question-title"></div>
       <div id="options-container"></div>
@@ -262,8 +316,8 @@
 
     <!-- Step 3: Divine Crossroads Tie-Breaker (If Needed) -->
     <div id="step-tiebreaker" class="hidden" style="text-align: center;">
-      <h2 style="color: var(--gold); font-family: 'TotallyGothic'; font-size: 2rem;">The Divine Crossroads</h2>
-      <p style="color: var(--mint); line-height: 1.5; margin-bottom: 25px;">
+      <h2 style="color: var(--magitech-green); font-family: 'TotallyGothic'; font-size: 2.5rem; text-shadow: 0 0 10px var(--magitech-green);">The Divine Crossroads</h2>
+      <p style="color: var(--crystal-cyan); line-height: 1.5; margin-bottom: 25px;">
         The threads of Fate hang in exact balance between two powers vying for your devotion. When pushed to the brink, which philosophy guides your hand?
       </p>
       <div id="tiebreaker-options"></div>
@@ -272,192 +326,136 @@
     <!-- Step 4: Result & Dossier -->
     <div id="step-result" class="hidden">
       <div id="dossier">
-        <h2 style="text-align: center; color: var(--gold); font-family: 'TotallyGothic'; margin-top: 0;">— Divine Patron Dossier —</h2>
-        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--teal); padding-bottom: 10px; margin-bottom: 15px;">
-          <div><strong>Player:</strong> <span id="res-player"></span></div>
-          <div><strong>Character:</strong> <span id="res-char"></span></div>
+        <h2 style="text-align: center; color: var(--magitech-green); font-family: 'TotallyGothic'; margin-top: 0; text-shadow: 0 0 10px var(--magitech-green);">— Divine Patron Dossier —</h2>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--crystal-cyan-dim); padding-bottom: 10px; margin-bottom: 15px;">
+          <div><strong style="color: var(--crystal-cyan);">Player:</strong> <span id="res-player"></span></div>
+          <div><strong style="color: var(--crystal-cyan);">Character:</strong> <span id="res-char"></span></div>
         </div>
 
         <!-- Primary Patron -->
         <div style="text-align: center;">
           <img id="god-img" class="god-badge-img" src="" alt="Primary Deity Image">
-          <div style="font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px;">Primary Patron</div>
+          <div style="font-size: 0.85rem; color: var(--magitech-green); text-transform: uppercase; letter-spacing: 2px;">Primary Patron</div>
           <h2 id="god-title" style="margin: 5px 0;"></h2>
-          <div id="god-alignment" style="color: var(--mint); font-weight: bold; margin-bottom: 5px;"></div>
-          <div id="god-domains" style="font-style: italic; color: var(--gold); margin-bottom: 10px;"></div>
+          <div id="god-alignment" style="color: var(--crystal-cyan); font-weight: bold; margin-bottom: 5px;"></div>
+          <div id="god-domains" style="font-style: italic; color: #aaa; margin-bottom: 10px;"></div>
         </div>
 
-        <p id="god-desc" style="line-height: 1.5; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 6px;"></p>
+        <p id="god-desc" style="line-height: 1.5; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--crystal-cyan-dim); padding: 15px; border-radius: 2px;"></p>
 
         <!-- Secondary Influence -->
         <div class="secondary-card">
-          <div style="font-size: 0.8rem; color: var(--mint); text-transform: uppercase; letter-spacing: 1px;">Secondary Influence</div>
+          <div style="font-size: 0.8rem; color: var(--crystal-cyan); text-transform: uppercase; letter-spacing: 1px;">Secondary Influence</div>
           <h3 id="sec-god-title" style="margin: 5px 0;"></h3>
           <div id="sec-god-details" style="font-size: 0.85rem; color: var(--lavender);"></div>
         </div>
 
-        <h4 style="color: var(--gold); margin-bottom: 8px;">Full Alignment Tally:</h4>
-        <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px;"></div>
+        <h4 style="color: var(--magitech-green); margin-bottom: 8px;">System Alignment Tally:</h4>
+        <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.5); border: 1px solid var(--crystal-cyan-dim); padding: 10px; border-radius: 2px;"></div>
       </div>
 
-      <button class="btn" onclick="downloadPDF()">Download Holy Dossier (PDF)</button>
+      <button class="btn" onclick="downloadPDF()">EXTRACT DOSSIER (PDF)</button>
     </div>
-
-    <div class="bottom-accent"></div>
   </div>
 
   <script>
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
     const GOOGLE_SHEET_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
 
-const DEITIES = {
-  "Lyricia": {
-    name: "Lyricia",
-    alignment: "Patron of Industry & Truth",
-    domains: "Commerce, Engineering, Enlightenment, Healing",
-    description: "Overseeing the Rycia Providence on Konran and the bustling moons of Lona Uyn. Her followers pioneer subterranean labs, oversee trade mints, and seek truth and healing through structured enlightenment.",
-    color: "#ea32caff",
-    font: "Aguafina Script",
-    image: "https://i.imgur.com/MYVDHjH.png",
-    factions: [
-      "Institute of Enlightenment Scholars",
-      "Oryginators of Zorm",
-      "Treasurers of Kelth",
-      "Sage Pryestesshood",
-      "Coryal Collective"
-    ]
-  },
-  "Oray": {
-    name: "Oray",
-    alignment: "Master of Magic & Arcane Arts",
-    domains: "Raw Magic, Alteration, Dragon Lore, Spellcraft",
-    description: "Ruler over raw magic and dragonwatchers. Oray's followers push the boundaries of reality through spellcraft, transfiguration, and sacred dragon lore.",
-    color: "#b7b7b7ff",
-    font: "Berkshire Swash",
-    image: "https://i.imgur.com/SxOctek.png",
-    factions: [
-      "Practitioners of Magic",
-      "Dragon Worshippers",
-      "Substantyaliti",
-      "Causalyti",
-      "Superstitionists"
-    ]
-  },
-  "Ousava": {
-    name: "Ousava",
-    alignment: "The World-Mother",
-    domains: "Life, Nature, Elements, Harmony, Tides",
-    description: "The primary architect of Konran who smashed the gods together in her ink cocoon to navigate the Voyd. Ousava commands elemental life, ocean tides, and natural balance across the planes.",
-    color: "#9900ffff",
-    font: "Allura",
-    image: "https://i.imgur.com/80inyux.png",
-    factions: [
-      "The Kabal of Lyfe",
-      "Servants of the Seas",
-      "The Elders of Earth",
-      "The Ayr Acolytes",
-      "The Fyre Fyends"
-    ]
-  },
-  "Ay": {
-    name: "Ay",
-    alignment: "Weaver of Fate & Ayan",
-    domains: "Fate, Cosmic Balance, Destiny, Time",
-    description: "Keeper of the sun-world Ayan and weaver of light threads. Ay guards the secrets of destiny, measuring the statistics of time and executing cosmic balance without mortal interference.",
-    color: "#ff9900ff",
-    font: "Mystery Quest",
-    image: "https://i.imgur.com/E7AYFxL.png",
-    factions: [
-      "Foremen of Fate",
-      "Agents of the Arrow",
-      "Dreamers of Destiny",
-      "Curators of Cause",
-      "Exhibitors of Effect"
-    ]
-  },
-  "Kayzoku": {
-    name: "Kayzoku",
-    alignment: "Lord of Kay-Kee & Master of Chance",
-    domains: "Chaos, Trickery, Enlightenment, High Stakes",
-    description: "Ruler of the divided world of Kay-Kee. Kayzoku thrives where chaos rules, teaching his followers that life is a grand game of trickery, balance, and seizing fortune.",
-    color: "#8e7cc3ff",
-    font: "Neucha",
-    image: "https://i.imgur.com/CBojgKL.png",
-    factions: [
-      "Link of Trickery",
-      "Link of Balance",
-      "Link of Enlightenment",
-      "Link of Deception",
-      "Link of Order"
-    ]
-  },
-  "Celeste": {
-    name: "Celeste",
-    alignment: "Divine Champion of Expression & Glory",
-    domains: "Martial Virtue, Athletics, Warfare, Artistic Expression",
-    description: "Patron of physical mastery, warfare, hearth, and artistic expression. Her followers honor the divine through heroic feats, masterworks of art, and honorable combat.",
-    color: "#00ccccff",
-    font: "New Rocker",
-    image: "https://i.imgur.com/I5sUz2U.png",
-    factions: [
-      "Order of Expression",
-      "Order of Warfare",
-      "Order of Athletics",
-      "Order of the Hearth",
-      "Order of Theory"
-    ]
-  },
-  "Psyon": {
-    name: "Psyon",
-    alignment: "Lord of Madness & Duathyer",
-    domains: "Chaos, Illusion, Madness, Memory Manipulation",
-    description: "Ruler of the dark, ice-bound plane of Duathyer. Psyon bends reality through unhinged paradox, memory theft, wild illusions, and pure anarchy.",
-    color: "#eeeeeeff",
-    font: "Creepster",
-    image: "https://i.imgur.com/RyHT82y.png",
-    factions: [
-      "Lunaci",
-      "Dementia",
-      "Manya",
-      "Delusyona",
-      "Hysteria"
-    ]
-  },
-  "Krayvuk": {
-    name: "Krayvuk",
-    alignment: "Lord of Kestox & Voyd Navigator",
-    domains: "Space, Time, Clockwork Mechanics, Mortality",
-    description: "Master of temporal mechanics and ruler of the clockwork battle station Kestox. Krayvuk navigates the Voyd, studies the stars, and commands time and technology.",
-    color: "#00ff00ff",
-    font: "Press Start 2P",
-    image: "https://i.imgur.com/A256PSY.png",
-    factions: [
-      "Vergence (Lords of Time)",
-      "Cyrcutry System",
-      "Expanz",
-      "Necros",
-      "Apogee"
-    ]
-  },
-  "Slavyna": {
-    name: "Slavyna",
-    alignment: "Her Imperial Viciousness & The Dark Mother",
-    domains: "Hidden Secrets, Leverage, Blood Magic, Covert Action",
-    description: "Ruler of Synthelavor with an iron hoof. Slavyna commands shadow academies, blood magic, and covert networks to wield ultimate leverage across the planes.",
-    color: "#ff0000ff",
-    font: "Ruthie",
-    image: "https://i.imgur.com/YJBmwFe.png",
-    factions: [
-      "Spyder Systerhood",
-      "Brotherhood of Blood",
-      "School of Shadows",
-      "The Dark Legion",
-      "Lust Wraiths"
-    ]
-  }
-};
+    const DEITIES = {
+      "Lyricia": {
+        name: "Lyricia",
+        alignment: "Patron of Industry & Truth",
+        domains: "Commerce, Engineering, Enlightenment, Healing",
+        desc: "Overseeing the Rycia Providence on Konran and the bustling moons of Lona Uyn. Her followers pioneer subterranean labs, oversee trade mints, and seek truth and healing through structured enlightenment.",
+        color: "#ea32caff",
+        fontClass: "font-Lyricia",
+        imgBW: "https://i.imgur.com/MYVDHjH.png",
+        factions: ["Institute of Enlightenment Scholars", "Oryginators of Zorm", "Treasurers of Kelth", "Sage Pryestesshood", "Coryal Collective"]
+      },
+      "Oray": {
+        name: "Oray",
+        alignment: "Master of Magic & Arcane Arts",
+        domains: "Raw Magic, Alteration, Dragon Lore, Spellcraft",
+        desc: "Ruler over raw magic and dragonwatchers. Oray's followers push the boundaries of reality through spellcraft, transfiguration, and sacred dragon lore.",
+        color: "#b7b7b7ff",
+        fontClass: "font-Oray",
+        imgBW: "https://i.imgur.com/SxOctek.png",
+        factions: ["Practitioners of Magic", "Dragon Worshippers", "Substantyaliti", "Causalyti", "Superstitionists"]
+      },
+      "Ousava": {
+        name: "Ousava",
+        alignment: "The World-Mother",
+        domains: "Life, Nature, Elements, Harmony, Tides",
+        desc: "The primary architect of Konran who smashed the gods together in her ink cocoon to navigate the Voyd. Ousava commands elemental life, ocean tides, and natural balance across the planes.",
+        color: "#9900ffff",
+        fontClass: "font-Ousava",
+        imgBW: "https://i.imgur.com/80inyux.png",
+        factions: ["The Kabal of Lyfe", "Servants of the Seas", "The Elders of Earth", "The Ayr Acolytes", "The Fyre Fyends"]
+      },
+      "Ay": {
+        name: "Ay",
+        alignment: "Weaver of Fate & Ayan",
+        domains: "Fate, Cosmic Balance, Destiny, Time",
+        desc: "Keeper of the sun-world Ayan and weaver of light threads. Ay guards the secrets of destiny, measuring the statistics of time and executing cosmic balance without mortal interference.",
+        color: "#ff9900ff",
+        fontClass: "font-Ay",
+        imgBW: "https://i.imgur.com/E7AYFxL.png",
+        factions: ["Foremen of Fate", "Agents of the Arrow", "Dreamers of Destiny", "Curators of Cause", "Exhibitors of Effect"]
+      },
+      "Kayzoku": {
+        name: "Kayzoku",
+        alignment: "Lord of Kay-Kee & Master of Chance",
+        domains: "Chaos, Trickery, Enlightenment, High Stakes",
+        desc: "Ruler of the divided world of Kay-Kee. Kayzoku thrives where chaos rules, teaching his followers that life is a grand game of trickery, balance, and seizing fortune.",
+        color: "#8e7cc3ff",
+        fontClass: "font-Kayzoku",
+        imgBW: "https://i.imgur.com/CBojgKL.png",
+        factions: ["Link of Trickery", "Link of Balance", "Link of Enlightenment", "Link of Deception", "Link of Order"]
+      },
+      "Celeste": {
+        name: "Celeste",
+        alignment: "Divine Champion of Expression & Glory",
+        domains: "Martial Virtue, Athletics, Warfare, Artistic Expression",
+        desc: "Patron of physical mastery, warfare, hearth, and artistic expression. Her followers honor the divine through heroic feats, masterworks of art, and honorable combat.",
+        color: "#00ccccff",
+        fontClass: "font-Celeste",
+        imgBW: "https://i.imgur.com/I5sUz2U.png",
+        factions: ["Order of Expression", "Order of Warfare", "Order of Athletics", "Order of the Hearth", "Order of Theory"]
+      },
+      "Psyon": {
+        name: "Psyon",
+        alignment: "Lord of Madness & Duathyer",
+        domains: "Chaos, Illusion, Madness, Memory Manipulation",
+        desc: "Ruler of the dark, ice-bound plane of Duathyer. Psyon bends reality through unhinged paradox, memory theft, wild illusions, and pure anarchy.",
+        color: "#eeeeeeff",
+        fontClass: "font-Psyon",
+        imgBW: "https://i.imgur.com/RyHT82y.png",
+        factions: ["Lunaci", "Dementia", "Manya", "Delusyona", "Hysteria"]
+      },
+      "Krayvuk": {
+        name: "Krayvuk",
+        alignment: "Lord of Kestox & Voyd Navigator",
+        domains: "Space, Time, Clockwork Mechanics, Mortality",
+        desc: "Master of temporal mechanics and ruler of the clockwork battle station Kestox. Krayvuk navigates the Voyd, studies the stars, and commands time and technology.",
+        color: "#00ff00ff",
+        fontClass: "font-Krayvuk",
+        imgBW: "https://i.imgur.com/A256PSY.png",
+        factions: ["Vergence (Lords of Time)", "Cyrcutry System", "Expanz", "Necros", "Apogee"]
+      },
+      "Slavyna": {
+        name: "Slavyna",
+        alignment: "Her Imperial Viciousness & The Dark Mother",
+        domains: "Hidden Secrets, Leverage, Blood Magic, Covert Action",
+        desc: "Ruler of Synthelavor with an iron hoof. Slavyna commands shadow academies, blood magic, and covert networks to wield ultimate leverage across the planes.",
+        color: "#ff0000ff",
+        fontClass: "font-Slavyna",
+        imgBW: "https://i.imgur.com/YJBmwFe.png",
+        factions: ["Spyder Systerhood", "Brotherhood of Blood", "School of Shadows", "The Dark Legion", "Lust Wraiths"]
+      }
+    };
     
-// 20 Questions Data
+    // 20 Questions Data
     const QUESTIONS = [
       { id: 1, title: "An ancient celestial relic from the Founding Gods is uncovered in Vantya. Which power do you seek to unlock?", options: [{ text: "A bioluminescent crystal ledger that optimizes trade routes, engineering, and endless economic wealth.", deities: ["Lyricia", "Oray"] }, { text: "A shifting prism of mist that fractures reality, inducing wild visions and uninhibited chaos.", deities: ["Psyon", "Kayzoku"] }, { text: "An elemental seed from the colossal Tree of Life that restores barren worlds and purifies water.", deities: ["Ousava", "Celeste"] }, { text: "A sacred woven mask that reveals the exact, unalterable thread of your woven destiny.", deities: ["Ay", "Krayvuk"] }] },
       { id: 2, title: "Your home realm's planetary crust is unstable and collapsing into a void. What is your response?", options: [{ text: "Harness raw arcane energy and command dragon riders to reinforce the crust through sheer magic and willpower.", deities: ["Oray", "Lyricia"] }, { text: "Observe the temporal collapse dispassionately, gathering data on space-time mechanics for future calculations.", deities: ["Krayvuk", "Ay"] }, { text: "Seize the panic to set up high-stakes bets on when it falls, escaping through a clever loophole during The Passing.", deities: ["Kayzoku", "Psyon"] }, { text: "Rally warriors and artists to construct a grand amphitheater, performing a heroic final anthem before going into battle.", deities: ["Celeste", "Ousava"] }] },
@@ -491,7 +489,7 @@ const DEITIES = {
       player = document.getElementById("playerName").value.trim();
       character = document.getElementById("charName").value.trim();
       if (!player || !character) {
-        return alert("Please enter both Player Name and Character Name!");
+        return alert("Please enter both Player Designation and Avatar Designation!");
       }
 
       document.getElementById("step-intro").classList.add("hidden");
@@ -501,7 +499,7 @@ const DEITIES = {
 
     function renderQuestion() {
       const q = QUESTIONS[currentQ];
-      document.getElementById("question-count").innerText = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+      document.getElementById("question-count").innerText = `QUERY ${currentQ + 1} OF ${QUESTIONS.length}`;
       document.getElementById("progress-fill").style.width = `${((currentQ) / QUESTIONS.length) * 100}%`;
       document.getElementById("question-text").innerText = `${q.id}. ${q.title}`;
 
@@ -518,7 +516,6 @@ const DEITIES = {
     }
 
     function selectOption(deities) {
-      // SOLUTION 3: Weighted Points (+2 for Primary choice, +1 for Secondary)
       if (deities.length === 1) {
         scores[deities[0]] = (scores[deities[0]] || 0) + 2;
       } else if (deities.length >= 2) {
@@ -546,7 +543,6 @@ const DEITIES = {
       // Find all deities tied for top score
       const tiedTop = Object.keys(scores).filter(g => scores[g] === maxScore);
 
-      // SOLUTION 1: Trigger Dynamic Tie-Breaker if there's a 1st place tie
       if (tiedTop.length > 1) {
         const tieContainer = document.getElementById("tiebreaker-options");
         tieContainer.innerHTML = "";
@@ -556,7 +552,7 @@ const DEITIES = {
           const btn = document.createElement("button");
           btn.className = "option-btn";
           btn.style.borderColor = info.color;
-          btn.innerHTML = `<strong class="${info.fontClass}" style="color:${info.color}; font-size:1.4rem;">${god}</strong> — <em>${info.domains}</em><br><small style="color:var(--mint);">${info.desc}</small>`;
+          btn.innerHTML = `<strong class="${info.fontClass}" style="color:${info.color}; font-size:1.4rem;">${god}</strong> — <em>${info.domains}</em><br><small style="color:var(--crystal-cyan);">${info.desc}</small>`;
           btn.onclick = () => resolveTie(god);
           tieContainer.appendChild(btn);
         });
@@ -568,7 +564,7 @@ const DEITIES = {
     }
 
     function resolveTie(chosenGod) {
-      scores[chosenGod] += 1; // Tiebreaker point guarantees clean winner
+      scores[chosenGod] += 1;
       document.getElementById("step-tiebreaker").classList.add("hidden");
       finishQuiz();
     }
@@ -576,7 +572,6 @@ const DEITIES = {
     function finishQuiz() {
       document.getElementById("step-result").classList.remove("hidden");
 
-      // SOLUTION 2: Sort deities by score for Primary & Secondary results
       const sortedDeities = Object.entries(scores).sort((a, b) => b[1] - a[1]);
       
       const primaryGod = sortedDeities[0][0];
@@ -594,6 +589,7 @@ const DEITIES = {
       godTitle.className = primaryInfo.fontClass;
       godTitle.style.color = primaryInfo.color;
       godTitle.style.fontSize = "2.8rem";
+      godTitle.style.textShadow = `0 0 15px ${primaryInfo.color}`;
 
       document.getElementById("god-alignment").innerText = `Alignment: ${primaryInfo.alignment}`;
       document.getElementById("god-domains").innerText = `Domains: ${primaryInfo.domains}`;
@@ -606,6 +602,7 @@ const DEITIES = {
       secTitle.className = secondaryInfo.fontClass;
       secTitle.style.color = secondaryInfo.color;
       secTitle.style.fontSize = "1.5rem";
+      secTitle.style.textShadow = `0 0 8px ${secondaryInfo.color}`;
 
       document.getElementById("sec-god-details").innerText = `${secondaryInfo.alignment} | Domains: ${secondaryInfo.domains}`;
 
@@ -618,7 +615,6 @@ const DEITIES = {
         tallyBox.appendChild(item);
       });
 
-      // SOLUTION 4: Send both Primary & Secondary to Google Sheet
       sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo);
     }
 
@@ -649,7 +645,7 @@ const DEITIES = {
         margin:       0.3,
         filename:     `${character}_Patron_Dossier.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, backgroundColor: '#0d131d' },
+        html2canvas:  { scale: 2, backgroundColor: '#050c12' },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
       html2pdf().set(opt).from(element).save();
