@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Belleza&family=Berkshire+Swash&family=Creepster&family=Mystery+Quest&family=Neucha&family=New+Rocker&family=Press+Start+2P&family=Ruthie&display=swap" rel="stylesheet">
 
-  <style>
+<style>
     /* Custom Brand Fonts from Konran Asset Tracker */
     @font-face {
       font-family: 'TotallyGothic';
@@ -28,13 +28,14 @@
       src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemplateGothic/TemplateGothic%20Regular/TemplateGothic%20Regular.ttf');
     }
 
-    /* Magitech Crystalpunk Palette Variables */
+    /* Magitech Crystalpunk & Glowing Gold Palette */
     :root {
       --magitech-green: #39ff14;
       --magitech-green-dim: #21990c;
-      --crystal-cyan: #00f0ff;
-      --crystal-cyan-dim: #006b72;
-      --hologram-bg: rgba(5, 12, 18, 0.85);
+      --glowing-gold: #ffcc00;
+      --glowing-gold-dim: rgba(255, 204, 0, 0.4);
+      --screen-green-top: rgba(30, 70, 40, 0.85);
+      --screen-green-bottom: rgba(10, 25, 15, 0.95);
       --space-dark: #020205;
       --lavender: #ded7f0;
     }
@@ -45,34 +46,33 @@
       margin: 0;
       padding: 0;
       font-family: 'Belleza', Georgia, serif;
-      /* Maintained your space background */
-      background: var(--space-dark) url('https://i.imgur.com/rbA1bPE.png') no-repeat center center fixed;
+      background: var(--space-dark) url('https://i.imgur.com/rbA1bPE') no-repeat center center fixed;
       background-size: cover;
-      color: var(--lavender);
+      color: var(--glowing-gold);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Main Container */
+    /* Main Container with Magical Screen Gradient */
     .app-container {
       width: 90%;
       max-width: 750px;
       margin: 80px auto;
-      background: var(--hologram-bg);
+      background: linear-gradient(145deg, var(--screen-green-top), var(--screen-green-bottom));
       border: 1px solid var(--magitech-green-dim);
       border-radius: 4px;
       padding: 40px;
-      box-shadow: 0 0 30px rgba(57, 255, 20, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.2), inset 0 0 40px rgba(57, 255, 20, 0.1);
       position: relative;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
     /* --- BRANDING ASSETS --- */
-.brand-top-bar {
+    .brand-top-bar {
       position: absolute;
-      top: -5px;
+      top: -45px;
       left: 50%;
       transform: translateX(-50%) rotate(180deg);
       width: 120%;
@@ -102,7 +102,7 @@
     .corner-bottom-left {
       bottom: -40px;
       left: -40px;
-      transform: rotate(270deg); /* 180 + 90 degrees */
+      transform: rotate(270deg);
     }
     /* ----------------------- */
 
@@ -119,111 +119,127 @@
     .subtitle {
       text-align: center;
       font-family: 'TemaCantante', serif;
-      color: var(--crystal-cyan);
-      font-size: 1.2rem;
+      color: var(--glowing-gold);
+      font-size: 1.3rem;
       margin-bottom: 25px;
-      text-shadow: 0 0 8px var(--crystal-cyan-dim);
+      text-shadow: 0 0 8px var(--glowing-gold-dim);
+    }
+
+    p {
+      text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+    }
+
+    hr {
+      border: 0; 
+      height: 1px; 
+      background: linear-gradient(90deg, transparent, var(--glowing-gold), transparent); 
+      margin: 25px 0;
     }
 
     /* Form Inputs */
     .input-group { margin-bottom: 20px; }
     label {
       display: block;
-      color: var(--magitech-green);
+      color: var(--glowing-gold);
       font-weight: bold;
       margin-bottom: 5px;
       letter-spacing: 1px;
+      text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
     }
     input[type="text"] {
       width: 100%;
       padding: 12px;
-      background: rgba(0, 240, 255, 0.05);
-      border: 1px solid var(--crystal-cyan-dim);
+      background: rgba(255, 204, 0, 0.05);
+      border: 1px solid var(--glowing-gold-dim);
       border-radius: 2px;
-      color: var(--magitech-green);
+      color: var(--glowing-gold);
       font-size: 1.1rem;
       transition: all 0.3s ease;
     }
     input[type="text"]:focus {
       outline: none;
-      border-color: var(--magitech-green);
-      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+      border-color: var(--glowing-gold);
+      box-shadow: 0 0 10px var(--glowing-gold-dim);
+    }
+    input::placeholder {
+      color: rgba(255, 204, 0, 0.4);
     }
 
     /* Buttons */
     .btn {
-      background: rgba(57, 255, 20, 0.1);
-      color: var(--magitech-green);
+      background: rgba(255, 204, 0, 0.1);
+      color: var(--glowing-gold);
       font-family: 'TemplateGothic', sans-serif;
       font-size: 1.2rem;
       letter-spacing: 2px;
       padding: 12px 24px;
-      border: 1px solid var(--magitech-green);
+      border: 1px solid var(--glowing-gold);
       border-radius: 2px;
       cursor: pointer;
       width: 100%;
       transition: all 0.2s ease;
       margin-top: 15px;
-      text-shadow: 0 0 5px var(--magitech-green);
-      box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+      text-shadow: 0 0 5px var(--glowing-gold);
+      box-shadow: 0 0 10px var(--glowing-gold-dim);
     }
     .btn:hover {
-      background: rgba(57, 255, 20, 0.3);
-      box-shadow: 0 0 20px var(--magitech-green);
+      background: rgba(255, 204, 0, 0.3);
+      box-shadow: 0 0 20px var(--glowing-gold);
       color: #fff;
     }
 
     /* Quiz Styling */
     .progress-bar-bg {
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid var(--crystal-cyan-dim);
+      background: rgba(255, 204, 0, 0.1);
+      border: 1px solid var(--glowing-gold-dim);
       border-radius: 2px;
       height: 8px;
       width: 100%;
       margin-bottom: 20px;
     }
     .progress-bar-fill {
-      background: var(--magitech-green);
+      background: var(--glowing-gold);
       height: 100%;
       width: 0%;
       transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--magitech-green);
+      box-shadow: 0 0 10px var(--glowing-gold);
     }
 
     .question-title {
       font-size: 1.4rem;
-      color: #fff;
+      color: var(--glowing-gold);
       margin-bottom: 20px;
       line-height: 1.5;
-      text-shadow: 0 0 5px var(--crystal-cyan);
+      text-shadow: 0 0 8px var(--glowing-gold-dim);
     }
 
     .option-btn {
       display: block;
       width: 100%;
-      background: rgba(0, 107, 114, 0.2);
-      border: 1px solid var(--crystal-cyan-dim);
-      color: var(--lavender);
+      background: rgba(255, 204, 0, 0.05);
+      border: 1px solid var(--glowing-gold-dim);
+      color: var(--glowing-gold);
       padding: 14px 18px;
       margin-bottom: 12px;
       border-radius: 2px;
       text-align: left;
-      font-size: 1rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
+      text-shadow: 0 0 3px rgba(255, 204, 0, 0.5);
     }
     .option-btn:hover {
-      background: rgba(0, 240, 255, 0.15);
-      border-color: var(--magitech-green);
+      background: rgba(255, 204, 0, 0.15);
+      border-color: var(--glowing-gold);
       color: #fff;
-      box-shadow: inset 0 0 10px rgba(57, 255, 20, 0.2);
+      box-shadow: inset 0 0 15px var(--glowing-gold-dim);
       transform: translateX(4px);
     }
     .option-btn::before {
       content: '>';
-      color: var(--magitech-green);
+      color: var(--glowing-gold);
       margin-right: 10px;
       opacity: 0;
       transition: opacity 0.2s;
@@ -245,12 +261,12 @@
 
     /* Dossier Printable View */
     #dossier {
-      background: var(--hologram-bg);
-      border: 2px solid var(--magitech-green);
+      background: rgba(10, 25, 15, 0.9);
+      border: 2px solid var(--glowing-gold);
       padding: 25px;
       border-radius: 2px;
-      color: var(--lavender);
-      box-shadow: inset 0 0 20px rgba(57, 255, 20, 0.1);
+      color: var(--glowing-gold);
+      box-shadow: inset 0 0 20px var(--glowing-gold-dim);
     }
     .god-badge-img {
       max-width: 150px;
@@ -263,8 +279,8 @@
     }
 
     .secondary-card {
-      background: rgba(0, 240, 255, 0.05);
-      border: 1px dashed var(--crystal-cyan);
+      background: rgba(255, 204, 0, 0.05);
+      border: 1px dashed var(--glowing-gold);
       border-radius: 2px;
       padding: 12px;
       margin: 15px 0;
