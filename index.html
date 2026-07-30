@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Allura&family=Belleza&family=Berkshire+Swash&family=Creepster&family=Mystery+Quest&family=Neucha&family=New+Rocker&family=Press+Start+2P&family=Ruthie&display=swap" rel="stylesheet">
 
-<style>
+  <style>
     /* Custom Brand Fonts from Konran Asset Tracker */
     @font-face {
       font-family: 'TotallyGothic';
@@ -28,7 +28,7 @@
       src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemplateGothic/TemplateGothic%20Regular/TemplateGothic%20Regular.ttf');
     }
 
-/* Magitech Crystalpunk & Glowing Gold Palette */
+    /* Magitech Crystalpunk & Glowing Gold Palette */
     :root {
       --magitech-green: #39ff14;
       --magitech-green-dim: #21990c;
@@ -46,7 +46,7 @@
       --color-teal: #0d9488;
     }
 
-/* The Nyne Text Effect */
+    /* The Nyne Text Effect */
     .nyne-glitch {
       font-family: 'TemaCantante', serif !important;
       color: var(--color-purple);
@@ -75,7 +75,7 @@
       align-items: center;
     }
 
-/* --- ANIMATIONS --- */
+    /* --- ANIMATIONS --- */
     /* 1. Initial Power-Up Surge */
     @keyframes magitech-boot {
       0% {
@@ -123,7 +123,7 @@
     }
   
     /* Main Container with Magical Screen Gradient */
-.app-container {
+    .app-container {
       width: 90%;
       max-width: 750px;
       margin: 80px auto;
@@ -134,8 +134,7 @@
       position: relative;
       backdrop-filter: blur(6px);
       
-      /* New Animation Rules */
-      /* Runs the boot-up once for 1.2s, then runs the 90s flicker loop infinitely */
+      /* Animation Rules */
       animation: magitech-boot 1.2s ease-out forwards, analog-flicker 90s linear infinite 1.2s;
     }
 
@@ -344,8 +343,8 @@
       display: block;
       margin: 15px auto;
       border-radius: 50%;
-      border: 2px solid var(--magitech-green);
-      box-shadow: 0 0 20px var(--magitech-green-dim);
+      border: 2px solid var(--glowing-gold);
+      box-shadow: 0 0 20px var(--glowing-gold-dim);
     }
 
     .secondary-card {
@@ -373,9 +372,9 @@
       <h1 class="title">The Fated Deity Quiz</h1>
       <div class="subtitle">Konran System Pilgrim Ledger</div>
       <p style="text-align: center; line-height: 1.5; text-shadow: 0 0 5px #000;">
-        Welcome, traveler. Discover which of <span class="nyne-glitch">The Nyne</span> is most likely to be your primary declaired deity while on your adventures as a Fated of Konran.
+        Welcome, traveler. Discover which of <span class="nyne-glitch">The Nyne</span> is most likely to be your primary declared deity while on your adventures as a Fated of Konran.
       </p>
-      <hr style="border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--crystal-cyan), transparent); margin: 25px 0;">
+      <hr>
       
       <div class="input-group">
         <label for="playerName">PLAYER DESIGNATION</label>
@@ -391,7 +390,7 @@
 
     <!-- Step 2: Interactive Quiz -->
     <div id="step-quiz" class="hidden">
-      <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; color: var(--crystal-cyan); margin-bottom: 10px; text-shadow: 0 0 5px var(--crystal-cyan-dim);" id="question-count">QUERY 1 OF 20</div>
+      <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; color: var(--glowing-gold); margin-bottom: 10px; text-shadow: 0 0 5px var(--glowing-gold-dim);" id="question-count">QUERY 1 OF 20</div>
       <div class="progress-bar-bg">
         <div id="progress-fill" class="progress-bar-fill"></div>
       </div>
@@ -402,8 +401,8 @@
 
     <!-- Step 3: Divine Crossroads Tie-Breaker (If Needed) -->
     <div id="step-tiebreaker" class="hidden" style="text-align: center;">
-      <h2 style="color: var(--magitech-green); font-family: 'TotallyGothic'; font-size: 2.5rem; text-shadow: 0 0 10px var(--magitech-green);">The Divine Crossroads</h2>
-      <p style="color: var(--crystal-cyan); line-height: 1.5; margin-bottom: 25px;">
+      <h2 style="color: var(--glowing-gold); font-family: 'TotallyGothic'; font-size: 2.5rem; text-shadow: 0 0 10px var(--glowing-gold);">The Divine Crossroads</h2>
+      <p style="color: var(--glowing-gold); line-height: 1.5; margin-bottom: 25px;">
         The threads of Fate hang in exact balance between two powers vying for your devotion. When pushed to the brink, which philosophy guides your hand?
       </p>
       <div id="tiebreaker-options"></div>
@@ -412,32 +411,32 @@
     <!-- Step 4: Result & Dossier -->
     <div id="step-result" class="hidden">
       <div id="dossier">
-        <h2 style="text-align: center; color: var(--magitech-green); font-family: 'TotallyGothic'; margin-top: 0; text-shadow: 0 0 10px var(--magitech-green);">— Divine Patron Dossier —</h2>
-        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--crystal-cyan-dim); padding-bottom: 10px; margin-bottom: 15px;">
-          <div><strong style="color: var(--crystal-cyan);">Player:</strong> <span id="res-player"></span></div>
-          <div><strong style="color: var(--crystal-cyan);">Character:</strong> <span id="res-char"></span></div>
+        <h2 style="text-align: center; color: var(--glowing-gold); font-family: 'TotallyGothic'; margin-top: 0; text-shadow: 0 0 10px var(--glowing-gold);">— Divine Patron Dossier —</h2>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--glowing-gold-dim); padding-bottom: 10px; margin-bottom: 15px;">
+          <div><strong style="color: var(--glowing-gold);">Player:</strong> <span id="res-player"></span></div>
+          <div><strong style="color: var(--glowing-gold);">Character:</strong> <span id="res-char"></span></div>
         </div>
 
         <!-- Primary Patron -->
         <div style="text-align: center;">
           <img id="god-img" class="god-badge-img" src="" alt="Primary Deity Image">
-          <div style="font-size: 0.85rem; color: var(--magitech-green); text-transform: uppercase; letter-spacing: 2px;">Primary Patron</div>
+          <div style="font-size: 0.85rem; color: var(--glowing-gold); text-transform: uppercase; letter-spacing: 2px;">Primary Patron</div>
           <h2 id="god-title" style="margin: 5px 0;"></h2>
-          <div id="god-alignment" style="color: var(--crystal-cyan); font-weight: bold; margin-bottom: 5px;"></div>
+          <div id="god-alignment" style="color: var(--glowing-gold); font-weight: bold; margin-bottom: 5px; text-shadow: 0 0 5px var(--glowing-gold-dim);"></div>
           <div id="god-domains" style="font-style: italic; color: #aaa; margin-bottom: 10px;"></div>
         </div>
 
-        <p id="god-desc" style="line-height: 1.5; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--crystal-cyan-dim); padding: 15px; border-radius: 2px;"></p>
+        <p id="god-desc" style="line-height: 1.5; background: rgba(255, 204, 0, 0.05); border: 1px solid var(--glowing-gold-dim); padding: 15px; border-radius: 2px;"></p>
 
         <!-- Secondary Influence -->
         <div class="secondary-card">
-          <div style="font-size: 0.8rem; color: var(--crystal-cyan); text-transform: uppercase; letter-spacing: 1px;">Secondary Influence</div>
+          <div style="font-size: 0.8rem; color: var(--glowing-gold); text-transform: uppercase; letter-spacing: 1px;">Secondary Influence</div>
           <h3 id="sec-god-title" style="margin: 5px 0;"></h3>
           <div id="sec-god-details" style="font-size: 0.85rem; color: var(--lavender);"></div>
         </div>
 
-        <h4 style="color: var(--magitech-green); margin-bottom: 8px;">System Alignment Tally:</h4>
-        <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.5); border: 1px solid var(--crystal-cyan-dim); padding: 10px; border-radius: 2px;"></div>
+        <h4 style="color: var(--glowing-gold); margin-bottom: 8px;">System Alignment Tally:</h4>
+        <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.5); border: 1px solid var(--glowing-gold-dim); padding: 10px; border-radius: 2px;"></div>
       </div>
 
       <button class="btn" onclick="downloadPDF()">EXTRACT DOSSIER (PDF)</button>
@@ -445,7 +444,7 @@
   </div>
 
   <script>
-   // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
     const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKu_MMw4PyBBGA0RUDawfeXYcITEXzCfmfecThw-bsNNlBC6d6tWFwmcAJFwNfiHDG/exec";
 
     const DEITIES = {
@@ -638,7 +637,7 @@
           const btn = document.createElement("button");
           btn.className = "option-btn";
           btn.style.borderColor = info.color;
-          btn.innerHTML = `<strong class="${info.fontClass}" style="color:${info.color}; font-size:1.4rem;">${god}</strong> — <em>${info.domains}</em><br><small style="color:var(--crystal-cyan);">${info.desc}</small>`;
+          btn.innerHTML = `<strong class="${info.fontClass}" style="color:${info.color}; font-size:1.4rem;">${god}</strong> — <em>${info.domains}</em><br><small style="color:var(--glowing-gold);">${info.desc}</small>`;
           btn.onclick = () => resolveTie(god);
           tieContainer.appendChild(btn);
         });
@@ -701,12 +700,11 @@
         tallyBox.appendChild(item);
       });
 
-      // ---> MISSING FUNCTION CALL RESTORED HERE <---
       sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo);
-    } // ---> MISSING BRACKET RESTORED HERE <---
+    }
 
     function sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo) {
-      if (!GOOGLE_SHEET_SCRIPT_URL) return; // ---> GUARD CLAUSE SIMPLIFIED <---
+      if (!GOOGLE_SHEET_SCRIPT_URL) return;
 
       // Format the scores into a readable string (e.g., "Lyricia: 4 | Oray: 2")
       const formattedScores = Object.entries(scores)
@@ -743,3 +741,6 @@
       };
       html2pdf().set(opt).from(element).save();
     }
+  </script>
+</body>
+</html>
