@@ -328,6 +328,53 @@
     .font-Slavyna { font-family: 'Ruthie', cursive; font-size: 1.5rem; }
     .font-Psyon { font-family: 'Creepster', cursive; }
 
+
+/* --- COMMS / SOCIAL FOOTER --- */
+    .social-footer {
+      margin-top: 30px;
+      text-align: center;
+      border-top: 1px solid var(--glowing-gold-dim);
+      padding-top: 20px;
+    }
+    
+    .social-footer-title {
+      color: var(--glowing-gold);
+      font-family: 'TemaCantante', serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px var(--glowing-gold-dim);
+      text-transform: uppercase;
+    }
+
+    .social-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .social-grid a {
+      color: var(--glowing-gold);
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      padding: 8px 12px;
+      background: rgba(255, 204, 0, 0.05);
+      border: 1px solid var(--glowing-gold-dim);
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      text-shadow: 0 0 3px rgba(255, 204, 0, 0.5);
+    }
+
+    .social-grid a:hover {
+      background: rgba(255, 204, 0, 0.2);
+      border-color: var(--glowing-gold);
+      color: #fff;
+      box-shadow: 0 0 10px var(--glowing-gold-dim), inset 0 0 10px rgba(255, 204, 0, 0.2);
+      transform: translateY(-2px);
+    }
+    
     /* Dossier Printable View */
     #dossier {
       background: rgba(10, 25, 15, 0.9);
@@ -439,7 +486,25 @@
         <div id="scores-breakdown" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.85rem; background: rgba(0,0,0,0.5); border: 1px solid var(--glowing-gold-dim); padding: 10px; border-radius: 2px;"></div>
       </div>
 
-      <button class="btn" onclick="downloadPDF()">EXTRACT DOSSIER (PDF)</button>
+     <button class="btn" onclick="downloadPDF()">EXTRACT DOSSIER (PDF)</button>
+
+      <!-- Establish Comms / Social Links -->
+      <div class="social-footer">
+        <div class="social-footer-title">Establish Comms with GMoD</div>
+        <div class="social-grid">
+          <a href="https://gamemasterondemand.com/" target="_blank">Website</a>
+          <a href="https://startplaying.games/gm/gmdrake" target="_blank">StartPlaying</a>
+          <a href="https://www.patreon.com/gamemasterondemand" target="_blank">Patreon</a>
+          <a href="https://bsky.app/profile/gamemasterondemand.com" target="_blank">BlueSky</a>
+          <a href="https://www.facebook.com/GameMasterOnDemand/" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/gamemasterondemand" target="_blank">Instagram</a>
+          <a href="https://www.youtube.com/channel/UCVy9eGh38eLFWkoEgSPHzMA" target="_blank">YouTube</a>
+          <a href="mailto:Hello@gamemasterondemand.com">Email</a>
+        </div>
+      </div>
+
+    </div> <!-- End of step-result -->
+  </div> <!-- End of app-container -->
     </div>
   </div>
 
