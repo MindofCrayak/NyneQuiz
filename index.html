@@ -701,11 +701,14 @@
         tallyBox.appendChild(item);
       });
 
-      sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo);
-    }
+   function sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo) {
+      if (!GOOGLE_SHEET_SCRIPT_URL || GOOGLE_SHEET_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbxKu_MMw4PyBBGA0RUDawfeXYcITEXzCfmfecThw-bsNNlBC6d6tWFwmcAJFwNfiHDG/exec")) return;
 
-    function sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo) {
-      if (!GOOGLE_SHEET_SCRIPT_URL || GOOGLE_SHEET_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbxGyNehZVMRneYkC3bjNXxc2JCLSvNj-60bVh3JYn7HNe1J9_lmipWwYD_UkyPeiEGB/exec")) return;
+      // Format the scores into a readable string (e.g., "Lyricia: 4 | Oray: 2")
+      const formattedScores = Object.entries(scores)
+        .filter(([god, pts]) => pts > 0) // Only log deities that actually got points
+        .map(([god, pts]) => `${god}: ${pts}`)
+        .join(" | ");
 
       const payload = {
         player: player,
@@ -714,17 +717,17 @@
         secondaryDeity: secondaryGod,
         alignment: primaryInfo.alignment,
         domains: primaryInfo.domains,
-        scores: scores
+        scoreBreakdown: formattedScores
       };
 
       fetch(GOOGLE_SHEET_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" }, // Bypasses browser CORS blocks
         body: JSON.stringify(payload)
       }).catch(err => console.error("Database logging error:", err));
     }
-
+      
     function downloadPDF() {
       const element = document.getElementById('dossier');
       const opt = {
