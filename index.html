@@ -445,8 +445,8 @@
   </div>
 
   <script>
-    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
-    const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxGyNehZVMRneYkC3bjNXxc2JCLSvNj-60bVh3JYn7HNe1J9_lmipWwYD_UkyPeiEGB/exec";
+   // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+    const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKu_MMw4PyBBGA0RUDawfeXYcITEXzCfmfecThw-bsNNlBC6d6tWFwmcAJFwNfiHDG/exec";
 
     const DEITIES = {
       "Lyricia": {
@@ -701,8 +701,12 @@
         tallyBox.appendChild(item);
       });
 
-   function sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo) {
-      if (!GOOGLE_SHEET_SCRIPT_URL || GOOGLE_SHEET_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbxKu_MMw4PyBBGA0RUDawfeXYcITEXzCfmfecThw-bsNNlBC6d6tWFwmcAJFwNfiHDG/exec")) return;
+      // ---> MISSING FUNCTION CALL RESTORED HERE <---
+      sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo);
+    } // ---> MISSING BRACKET RESTORED HERE <---
+
+    function sendToGoogleSheet(primaryGod, primaryInfo, secondaryGod, secondaryInfo) {
+      if (!GOOGLE_SHEET_SCRIPT_URL) return; // ---> GUARD CLAUSE SIMPLIFIED <---
 
       // Format the scores into a readable string (e.g., "Lyricia: 4 | Oray: 2")
       const formattedScores = Object.entries(scores)
@@ -739,6 +743,3 @@
       };
       html2pdf().set(opt).from(element).save();
     }
-  </script>
-</body>
-</html>
