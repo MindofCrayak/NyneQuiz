@@ -28,7 +28,7 @@
       src: url('https://cdn.jsdelivr.net/gh/MindofCrayak/Konran-Fonts@main/TemplateGothic/TemplateGothic%20Regular/TemplateGothic%20Regular.ttf');
     }
 
-    /* Magitech Crystalpunk & Glowing Gold Palette */
+/* Magitech Crystalpunk & Glowing Gold Palette */
     :root {
       --magitech-green: #39ff14;
       --magitech-green-dim: #21990c;
@@ -38,8 +38,28 @@
       --screen-green-bottom: rgba(10, 25, 15, 0.95);
       --space-dark: #020205;
       --lavender: #ded7f0;
+      
+      /* Colors for The Nyne Glitch Effect */
+      --color-purple: #540162;
+      --color-mint: #bcdbb0;
+      --color-lavender: #ded7f0;
+      --color-teal: #0d9488;
     }
 
+/* The Nyne Text Effect */
+    .nyne-glitch {
+      font-family: 'TemaCantante', serif !important;
+      color: var(--color-purple);
+      font-weight: bold;
+      text-shadow: 
+        -1.5px -1.5px 0px var(--color-mint), 
+        2px 1.5px 0px var(--color-lavender), 
+        -2.5px 1px 0px var(--color-teal), 
+        1.5px -2px 0px rgba(212, 175, 55, 0.7), 
+        0px 0px 4px var(--color-purple), 
+        0px 0px 12px rgba(84, 1, 98, 0.4);
+    }
+  
     * { box-sizing: border-box; }
 
     body {
@@ -353,7 +373,7 @@
       <h1 class="title">The Fated Deity Quiz</h1>
       <div class="subtitle">Konran System Pilgrim Ledger</div>
       <p style="text-align: center; line-height: 1.5; text-shadow: 0 0 5px #000;">
-        Welcome, traveler. Discover which of <em style="color: var(--magitech-green);">The Nyne</em> holds claim to your soul before embarking on your journey through Konran.
+        Welcome, traveler. Discover which of <span class="nyne-glitch">The Nyne</span> is most likely to be your primary declaired deity while on your adventures as a Fated of Konran.
       </p>
       <hr style="border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--crystal-cyan), transparent); margin: 25px 0;">
       
